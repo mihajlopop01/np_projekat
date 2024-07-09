@@ -24,7 +24,7 @@ public class DatabaseConnection {
         connectionPool = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             try {
-                String url = "jdbc:mysql://localhost/seminarski?serverTimezone=CET";
+                String url = "jdbc:mysql://localhost/np?serverTimezone=CET";
                 String user = "toni";
                 String password = "user";
                 Connection connection = DriverManager.getConnection(url, user, password);

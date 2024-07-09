@@ -12,12 +12,15 @@ form\PretrazivanjeSalona.class
 form\PrikazSalona$1.class
 table_model\IzmenaTerminaTableModel.class
 form\PretrazivanjeTermina.class
+form\VlasnikMainForm$3.class
+form\DodavanjeFrizera$1.class
 form\PretrazivanjeTermina$3.class
 form\VlasnikMainForm.class
 form\StartVlasnik$2.class
 table_model\PrikazSalonaTableModel.class
 form\KorisnikMainForm.class
 form\LoginVlasnik.class
+form\DodavanjeFrizera.class
 form\DodavanjeTermina$1.class
 form\IzmenaTerminaDialog$2.class
 form\RegisterVlasnik$1.class

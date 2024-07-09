@@ -1,4 +1,5 @@
 logic\so\AbstractSO.class
+logic\so\ZapamtiFrizeraSO.class
 logic\so\NadjiSalonSO.class
 logic\so\AzurirajTerminSO1.class
 db\DatabaseConnection.class

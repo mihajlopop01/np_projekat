@@ -96,6 +96,12 @@ public class Controller {
         return (OpstiDomenskiObjekat)so.getResult();
     }
 
+    public OpstiDomenskiObjekat zapamtiFrizera(OpstiDomenskiObjekat v14) throws Exception {
+        ZapamtiFrizeraSO so = new ZapamtiFrizeraSO();
+        so.execute(v14);
+        return (OpstiDomenskiObjekat)so.getResult();
+    }
+
    
     
 }

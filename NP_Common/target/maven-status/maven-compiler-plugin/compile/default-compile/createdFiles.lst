@@ -8,4 +8,5 @@ domen\OpstiDomenskiObjekat.class
 communication\Odgovor.class
 communication\Sender.class
 communication\Zahtev.class
+domen\Frizer.class
 domen\Salon.class

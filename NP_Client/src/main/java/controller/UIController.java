@@ -5,6 +5,7 @@
 package controller;
 
 import communication.*;
+import domen.Frizer;
 import domen.Korisnik;
 import domen.OpstiDomenskiObjekat;
 import domen.Salon;
@@ -47,7 +48,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(objekat,SO.LOGIN);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("LOGIN odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
             return (OpstiDomenskiObjekat)odgovorServera.getRes();
        } else {
@@ -71,7 +72,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.REGISTER);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("REGISTER odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
            return (OpstiDomenskiObjekat)odgovorServera.getRes();
            
@@ -84,7 +85,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.INSERT);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru za sacuvaj: "+ odgovorServera.getRes());
+       System.out.println("SACUVAJ odgovor "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
           return (OpstiDomenskiObjekat)odgovorServera.getRes();
            
@@ -97,7 +98,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.ALLTERMINI);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("ALL_TERMINI odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
           return (List<OpstiDomenskiObjekat>)odgovorServera.getRes();
            
@@ -110,7 +111,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.GETONETERMIN);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("GET_ONE_TERMIN odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
             return (OpstiDomenskiObjekat)odgovorServera.getRes();
        } else {
@@ -122,7 +123,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.ALLSALONI);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("ALL_SALONI odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
           return (List<OpstiDomenskiObjekat>)odgovorServera.getRes();
            
@@ -135,7 +136,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.ZAPAMTITERMIN);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("ZAPAMTI_TERMIN odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
            return (OpstiDomenskiObjekat)odgovorServera.getRes();
            
@@ -149,7 +150,7 @@ public class UIController {
        System.out.println("Odo u UICon pre slanja: "+odo.toString());
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("GET_ONE_SALON: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
             return (OpstiDomenskiObjekat)odgovorServera.getRes();
        } else {
@@ -161,7 +162,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.UPDATETERMIN);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("UPDATE_TERMIN: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
             return (OpstiDomenskiObjekat)odgovorServera.getRes();
        } else {
@@ -173,7 +174,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.GETONEZAKAZIVANJE);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("VRATI_ZAKAZIVANJE: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
             return (OpstiDomenskiObjekat)odgovorServera.getRes();
        } else {
@@ -187,7 +188,7 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.ALLTERMINI1);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("ALL_TERMINI odgovor: " + odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
           return (List<OpstiDomenskiObjekat>)odgovorServera.getRes();
            
@@ -200,9 +201,21 @@ public class UIController {
        Zahtev zahtevKlijenta = new Zahtev(odo,SO.UPDATETERMIN1);
        sender.send(zahtevKlijenta);
        Odgovor odgovorServera = (Odgovor)receiver.receive();
-       System.out.println("U UIControlleru: "+ odgovorServera.getRes());
+       System.out.println("UPDATE_TERMIN odgovor: "+ odgovorServera.getRes());
        if(odgovorServera.getE() == null) {
             return (OpstiDomenskiObjekat)odgovorServera.getRes();
+       } else {
+       throw odgovorServera.getE();
+       }
+    }
+
+    public void ubaci_frizera(OpstiDomenskiObjekat odo) throws Exception {
+       Zahtev zahtevKlijenta = new Zahtev(odo,SO.UBACIFRIZERA);
+       sender.send(zahtevKlijenta);
+       Odgovor odgovorServera = (Odgovor)receiver.receive();
+       System.out.println("UBACI_FRIZERA odgovor: "+ odgovorServera.getRes());
+       if(odgovorServera.getE() == null) {
+            
        } else {
        throw odgovorServera.getE();
        }

@@ -7,6 +7,7 @@ package niti;
 import communication.*;
 import static communication.SO.ALLTERMINI;
 import static communication.SO.GETONESALON;
+import static communication.SO.UBACIFRIZERA;
 import static communication.SO.UPDATETERMIN;
 import domen.OpstiDomenskiObjekat;
 import java.net.Socket;
@@ -121,6 +122,12 @@ public class KlijentskaNit extends Thread{
                             List<OpstiDomenskiObjekat> lista11 = controller.allTermini1(odo11);
                             odgovorServera.setRes(lista11);
                             break;
+                         case UBACIFRIZERA:
+                            OpstiDomenskiObjekat v14 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
+                            System.out.println("UBACI_FRIZERA: "+v14);
+                            OpstiDomenskiObjekat v15 = controller.zapamtiFrizera(v14);
+                             
+                             break;
                             
                          case UPDATETERMIN1:
                             OpstiDomenskiObjekat odo12 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
@@ -129,6 +136,8 @@ public class KlijentskaNit extends Thread{
                             System.out.println("Termin posle SO iz klijentske niti: "+ odo13);
                             odgovorServera.setRes(odo13);
                             break;
+                          
+                         
                         
                             
                             
