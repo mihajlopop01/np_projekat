@@ -27,8 +27,10 @@ public class PretrazivanjeTermina extends javax.swing.JFrame {
      * Creates new form PretrazivanjeTermina
      */
     private Salon salon;
+    private List<OpstiDomenskiObjekat> terminiIzbranogDatuma;
     public PretrazivanjeTermina(Salon salon) {
         this.salon = salon;
+        terminiIzbranogDatuma = new ArrayList<>();
         initComponents();
         
     }
@@ -60,7 +62,7 @@ public class PretrazivanjeTermina extends javax.swing.JFrame {
         jLabel1.setText("Pretrazivanje termina");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("Vrednost");
+        jLabel2.setText("Datum");
 
         btnPronadji.setText("Pronadji");
         btnPronadji.addActionListener(new java.awt.event.ActionListener() {
@@ -106,8 +108,8 @@ public class PretrazivanjeTermina extends javax.swing.JFrame {
                 .addGap(145, 145, 145)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnPronadji, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtVrednost, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -162,7 +164,8 @@ public class PretrazivanjeTermina extends javax.swing.JFrame {
        
             //termin.setFrizer(frizer);
             List<OpstiDomenskiObjekat> listaTermina = UIController.getInstance().allTermini(termin);
-            List<OpstiDomenskiObjekat> terminiIzbranogDatuma = vratiTermineZaDatum(listaTermina);
+            terminiIzbranogDatuma = vratiTermineZaDatum(listaTermina);
+            System.out.println("Lista: "+terminiIzbranogDatuma);
             populateTable(terminiIzbranogDatuma);
             
         } catch (Exception e) {
@@ -181,12 +184,23 @@ public class PretrazivanjeTermina extends javax.swing.JFrame {
         termin.setDatum((Date) tblTermini.getValueAt(row, 1));
         termin.setFrizer((String) tblTermini.getValueAt(row, 2));
         termin.setSlobodan((boolean) tblTermini.getValueAt(row,3));
+        for(OpstiDomenskiObjekat odo: terminiIzbranogDatuma) {
+            Termin t = (Termin)odo;
+            if(t.getVreme().equals(termin.getVreme())) {
+                termin = t;
+                break;
+            
+            }
+            
+        }
+        termin.setWhereType(3);
         
         try {
             OpstiDomenskiObjekat odo = UIController.getInstance().getOneTermin(termin);
             Termin t = (Termin)odo;
             t.setSalon(this.salon);
-            JOptionPane.showMessageDialog(null, "Ovo su detalji o terminu:/n "+ (Termin)odo); //treba srediti dodatno
+            JOptionPane.showMessageDialog(null, "Ovo su detalji o terminu:\n "+ (Termin)odo); //treba srediti dodatno
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Sistem ne moze da vrati podatke o terminu!"+ e.getMessage());
             e.printStackTrace();
@@ -216,23 +230,21 @@ public class PretrazivanjeTermina extends javax.swing.JFrame {
     }
 
     private List<OpstiDomenskiObjekat> vratiTermineZaDatum(List<OpstiDomenskiObjekat> listaTermina) {
+        
         List<OpstiDomenskiObjekat> lista = new ArrayList<>();
         String dateStr = txtVrednost.getText();
-        Date date = null;
-           // System.out.println(frizer);
-            
-         try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            date = format.parse(dateStr);
-            
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        
+
         for (OpstiDomenskiObjekat odo: listaTermina) {
             Termin t = (Termin)odo;
-            if (t.getDatum().equals(date)){
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDateStr = format.format(t.getDatum());
+            System.out.println(formattedDateStr);
+            
+            if (dateStr.equals(formattedDateStr)){
                 lista.add(t);
             }
+            
         } return lista;
     }
 }

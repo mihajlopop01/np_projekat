@@ -34,7 +34,7 @@ public class PrikazTermina extends javax.swing.JFrame {
         this.terminiSalona = terminiSalona;
         this.salon = salon;
         this.korisnik = korisnik;
-        jLabel1.setText("Termini salona "+salon.getIme() + " Korsniik: "+ korisnik.getKorisnikid() + " T");
+        jLabel1.setText("Slobodni termini izabranog salona");
         populateTable(terminiSalona);
     }
 
@@ -52,6 +52,7 @@ public class PrikazTermina extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTermini = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,24 +103,35 @@ public class PrikazTermina extends javax.swing.JFrame {
                 .addContainerGap(350, Short.MAX_VALUE))
         );
 
+        jButton2.setText("Zatvori");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(618, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(22, 22, 22)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,21 +151,35 @@ public class PrikazTermina extends javax.swing.JFrame {
         termin.setFrizer((String) tblTermini.getValueAt(row, 2));
         termin.setSlobodan((boolean) tblTermini.getValueAt(row,3));
         termin.setKorisnik(korisnik);
-        Termin ter = (Termin) UIController.getInstance().getOneTermin(termin);
-        System.out.println("ID termina: "+ter.getTerminid());
-        //System.out.println("Termin iz PrikazTerminaForm: "+ termin.toString());
-        System.out.println("Sve ok");
-        new ZakazivanjeTermina(null, true,ter,korisnik, salon).setVisible(true);
+        for (OpstiDomenskiObjekat odo: terminiSalona) { 
+            Termin t = (Termin)odo;
+            if(t.getVreme().equals(termin.getVreme())) {
+            termin = t;
+            break;
+            }
+        
+        }
+        
+        
+        new ZakazivanjeTermina(this, true,termin,korisnik, salon).setVisible(true);
+        
         } catch (Exception e) {
         e.printStackTrace();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new KorisnikMainForm(korisnik).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

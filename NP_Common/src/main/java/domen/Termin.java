@@ -70,6 +70,7 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
         this.salon = salon;
         this.terminid = terminid;
         this.ocena = ocena;
+        this.terminid = terminid;
     
     }
 
@@ -169,7 +170,7 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public String toString() {
-        return "Vreme: " + vreme + " Datum: " + datum + " Frizer: "+frizer + "Slobodan: " + slobodan;
+        return "Terminid: "+ terminid + " Vreme: " + vreme + " Datum: " + datum + " Frizer: "+frizer + " Slobodan: " + slobodan;
     }
 
     @Override

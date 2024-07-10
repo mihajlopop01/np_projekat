@@ -25,6 +25,7 @@ form\DodavanjeTermina$1.class
 form\IzmenaTerminaDialog$2.class
 form\RegisterVlasnik$1.class
 form\IzmenaTermina$2.class
+form\PrikazTermina$2.class
 form\StartVlasnik$1.class
 form\PrikazSalona.class
 form\ZakazivanjeTermina.class
@@ -38,6 +39,7 @@ form\IzmenaTerminaDialog.class
 form\KorisnikMainForm$3.class
 form\PrikazTermina$1.class
 form\DodavanjeSalona$2.class
+form\DodavanjeTermina$2.class
 form\VlasnikMainForm$1.class
 form\IzmenaTerminaDialog$1.class
 controller\UIController.class

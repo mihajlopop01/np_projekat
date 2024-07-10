@@ -52,7 +52,7 @@ public class KorisnikMainForm extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Izmena ili otkazivanje termina");
+        jButton2.setText("Otkazivanje termina");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

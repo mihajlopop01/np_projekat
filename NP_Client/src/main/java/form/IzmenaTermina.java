@@ -60,8 +60,8 @@ public class IzmenaTermina extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         btnOtkazi = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,17 +77,17 @@ public class IzmenaTermina extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Izaberi termin");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         btnOtkazi.setText("Otkazi termin");
         btnOtkazi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOtkaziActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Zatvori");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -98,16 +98,16 @@ public class IzmenaTermina extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(159, 159, 159)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(153, 153, 153)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnOtkazi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnOtkazi, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,42 +117,15 @@ public class IzmenaTermina extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnOtkazi)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jButton1)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Termin termin = new Termin();
-        int row = jTable1.getSelectedRow();
-        termin.setVreme((String) jTable1.getValueAt(row, 0));
-        termin.setDatum((Date) jTable1.getValueAt(row, 1));
-        termin.setFrizer((String) jTable1.getValueAt(row, 2));
-        t = vratiTermin(aktivniTermini, termin);
-        try {
-            Termin selektovani = (Termin) UIController.getInstance().getOneTermin(t); //kako bi vratio terminid
-            new IzmenaTerminaDialog(this, true, selektovani).setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            //Termin selektovani = (Termin) UIController.getInstance().getOneTermin(t);
-            // System.out.println("PIB salona termina iz izmene termina: " + selektovani.getSalon().getPib());
-            //new IzmenaTerminaDialog(this,true, t).setVisible(true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        //new IzmenaTerminaDialog()
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnOtkaziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtkaziActionPerformed
         // TODO add your handling code here:
@@ -172,6 +145,12 @@ public class IzmenaTermina extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnOtkaziActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new KorisnikMainForm(korisnik).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

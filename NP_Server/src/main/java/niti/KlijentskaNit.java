@@ -46,9 +46,9 @@ public class KlijentskaNit extends Thread{
                     switch (zahtevKlijenta.getO()) {
                         case LOGIN:
                             OpstiDomenskiObjekat user = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
-                            System.out.println("ODO iz klijentske niti: "+ user.toString());
+                            //System.out.println("ODO iz klijentske niti: "+ user.toString());
                             OpstiDomenskiObjekat ulogovan = controller.login(user);
-                            System.out.println("Iz klijentske niti: "+ ulogovan);
+                            System.out.println("CASE: LOGIN "+ ulogovan);
                             this.domen = ulogovan;
                             odgovorServera.setRes(ulogovan);
                             break;
@@ -56,20 +56,22 @@ public class KlijentskaNit extends Thread{
                         case REGISTER:
                             OpstiDomenskiObjekat v = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             OpstiDomenskiObjekat vl = controller.register(v);
+                            System.out.println("CASE: REGISTER: "+ vl);
                             odgovorServera.setRes(vl);
                             break;
                             
                             
-                        case INSERT:
+                        case ZAPAMTISALON:
                             OpstiDomenskiObjekat odo = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
-                            System.out.println("ODO iz klijentse niti: "+ odo);
-                            OpstiDomenskiObjekat obj = controller.insert(odo);
+                            System.out.println("CASE: INSERT "+ odo);
+                            OpstiDomenskiObjekat obj = controller.zapamti_salon(odo);
                             odgovorServera.setRes(obj);
                             break;
                             
                         case ALLTERMINI:
                             OpstiDomenskiObjekat odo1 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             List<OpstiDomenskiObjekat> lista = controller.allTermini(odo1);
+                            System.out.println("CASE: ALLTERMINI: "+ lista);
                             odgovorServera.setRes(lista);
                             break;
                             
@@ -77,19 +79,21 @@ public class KlijentskaNit extends Thread{
                             OpstiDomenskiObjekat odo2 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             //System.out.println("ODO iz klijentske niti: "+odo2.toString());
                             OpstiDomenskiObjekat odo3 = controller.getOneTermin(odo2);
-                            System.out.println("Iz klijentske niti: "+ odo3);
+                            System.out.println("CASE: GETONETERMIN: "+ odo3);
                             odgovorServera.setRes(odo3);
                             break;
                             
                         case ALLSALONI:
                             OpstiDomenskiObjekat odo4 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             List<OpstiDomenskiObjekat> lista1 = controller.allSaloni(odo4);
+                            System.out.println("CASE: ALLSALONI: "+ lista1);
                             odgovorServera.setRes(lista1);
                             break;
                             
                         case ZAPAMTITERMIN:
                             OpstiDomenskiObjekat v2 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             OpstiDomenskiObjekat v3 = controller.zapamtiTermin(v2);
+                            System.out.println("CASE: ZAPAMTITERMIN: "+ v3);
                             odgovorServera.setRes(v3);
                             break;
                             
@@ -97,7 +101,7 @@ public class KlijentskaNit extends Thread{
                             OpstiDomenskiObjekat odo5 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             System.out.println("Salon pre SO iz klijentske niti: "+odo5.toString());
                             OpstiDomenskiObjekat odo6 = controller.getOneSalon(odo5);
-                            System.out.println("Salon posle SO iz klijentske niti: "+ odo6);
+                            System.out.println("CASE: GETONESALON: "+ odo6);
                             odgovorServera.setRes(odo6);
                             break;
                             
@@ -111,9 +115,9 @@ public class KlijentskaNit extends Thread{
                             
                          case GETONEZAKAZIVANJE:
                             OpstiDomenskiObjekat odo9 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
-                            System.out.println("Zakazivanje pre SO iz klijentske niti: "+odo9.toString());
+                            //System.out.println("Zakazivanje pre SO iz klijentske niti: "+odo9.toString());
                             OpstiDomenskiObjekat odo10 = controller.getOneZakazivanje(odo9);
-                            System.out.println("Zakazivanje posle SO iz klijentske niti: "+ odo10);
+                            System.out.println("CASE: GETONEZAKAZIVANJE: "+ odo10);
                             odgovorServera.setRes(odo10);
                             break;
                             
@@ -124,26 +128,19 @@ public class KlijentskaNit extends Thread{
                             break;
                          case UBACIFRIZERA:
                             OpstiDomenskiObjekat v14 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
-                            System.out.println("UBACI_FRIZERA: "+v14);
+                            System.out.println("CASE: UBACI_FRIZERA: "+v14);
                             OpstiDomenskiObjekat v15 = controller.zapamtiFrizera(v14);
                              
                              break;
                             
                          case UPDATETERMIN1:
                             OpstiDomenskiObjekat odo12 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
-                            System.out.println("Termin pre SO iz klijentske niti: "+odo12.toString());
+                            //System.out.println("Termin pre SO iz klijentske niti: "+odo12.toString());
                             OpstiDomenskiObjekat odo13 = controller.updateTermin1(odo12);
-                            System.out.println("Termin posle SO iz klijentske niti: "+ odo13);
+                            System.out.println("CASE: UPDATETERMINI: "+ odo13);
                             odgovorServera.setRes(odo13);
                             break;
-                          
-                         
-                        
-                            
-                            
-                            
-                            
-  
+
                     }
                 } catch (Exception e) {
                     odgovorServera.setE(e);

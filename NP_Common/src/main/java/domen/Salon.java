@@ -100,11 +100,11 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public String toString() {
-        return "Salon: "+ pib + " "+whereType;
+        return "Salon: "+ pib;
     }
     
     public String toString1() {
-        return "Salon: "+ pib + " Naziv salona: " +ime+ " Mesto"+ mesto + " Broj frizera: " + brojFrizera + "Vlasnik: "+ vlasnik.getVlasnikid();
+        return "PIB: "+ pib + " Naziv salona: " +ime+ " Mesto: "+ mesto + " Broj frizera: " + brojFrizera;
     }
 
     

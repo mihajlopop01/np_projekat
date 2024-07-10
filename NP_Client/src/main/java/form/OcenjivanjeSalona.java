@@ -199,6 +199,7 @@ public class OcenjivanjeSalona extends javax.swing.JFrame {
         try {
             Termin termin = (Termin) UIController.getInstance().updateTermin(t);
             JOptionPane.showMessageDialog(this, "Uspesno ocenjen salon!");
+            new KorisnikMainForm(korisnik).setVisible(true);
             dispose();
             
         } catch (Exception e) {

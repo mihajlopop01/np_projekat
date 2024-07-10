@@ -35,7 +35,6 @@ public class PrikazSalona extends javax.swing.JDialog {
         initComponents();
         this.salon = salon;
         this.korisnik = korisnik;
-        System.out.println("Salon brate"+salon.getPib()+ "Korisnik: "+ korisnik.getKorisnikid());
         populateComboBox(salon);
     }
 
@@ -100,7 +99,6 @@ public class PrikazSalona extends javax.swing.JDialog {
         try {
             Termin termin = new Termin(this.salon);
             List<OpstiDomenskiObjekat> terminiSalona = UIController.getInstance().allTermini(termin);
-            System.out.println(terminiSalona);
             new PrikazTermina(vratiSlobodneTermineSalona(terminiSalona),salon, korisnik).setVisible(true);
             dispose();
         } catch (Exception e) {
@@ -123,7 +121,7 @@ public class PrikazSalona extends javax.swing.JDialog {
 
     private void populateComboBox(Salon salon) {
         cbSalon.setModel(new DefaultComboBoxModel<>());
-        cbSalon.addItem(salon.toString());
+        cbSalon.addItem(salon.toString1());
         
     }
 

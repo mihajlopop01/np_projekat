@@ -168,7 +168,7 @@ public class PretrazivanjeSalona extends javax.swing.JFrame {
         try {
             OpstiDomenskiObjekat odo = UIController.getInstance().getOneSalon(s);
             Salon t = (Salon)odo;
-            JOptionPane.showMessageDialog(null, "Ovo su detalji o salonu:  "+ t.toString1()); //treba srediti dodatno
+            JOptionPane.showMessageDialog(null, "Izabrali ste salon:  "+ t.getIme()); //treba srediti dodatno
             new PrikazSalona(this,true,s, korisnik).setVisible(true);
             dispose();
         } catch (Exception e) {

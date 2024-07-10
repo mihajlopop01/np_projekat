@@ -34,7 +34,7 @@ public class Controller {
         return (OpstiDomenskiObjekat)so.getResult();
     }
 
-    public OpstiDomenskiObjekat insert(OpstiDomenskiObjekat odo) throws Exception {
+    public OpstiDomenskiObjekat zapamti_salon(OpstiDomenskiObjekat odo) throws Exception {
         ZapamtiSalonSO so = new ZapamtiSalonSO();
         so.execute(odo);
         return (OpstiDomenskiObjekat)so.getResult();

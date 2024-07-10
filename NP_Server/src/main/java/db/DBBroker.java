@@ -4,8 +4,6 @@
  */
 package db;
 
-
-
 import domen.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,15 +20,16 @@ import java.util.logging.Logger;
  */
 public class DBBroker {
 
-   private Connection connection;
+    private Connection connection;
+
     public DBBroker(Connection connection) {
-        this.connection=connection;
+        this.connection = connection;
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         return connection;
     }
-   
+
     public void disconnect() throws SQLException {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -65,7 +64,7 @@ public class DBBroker {
             throw ex;
         }
     }
-    
+
     public OpstiDomenskiObjekat select(OpstiDomenskiObjekat odo) throws SQLException {
         ResultSet rs = null;
         Statement st = null;
@@ -75,8 +74,9 @@ public class DBBroker {
         if (odo.getWhereType() == 3) {
             upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition4();
         } else {
-            upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition(); }
-        System.out.println("Upit: "+upit);
+            upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition();
+        }
+        System.out.println("Upit: " + upit);
         boolean signal;
         try {
             st = connection.createStatement();
@@ -84,25 +84,26 @@ public class DBBroker {
             signal = rs.next();
             if (signal == true) {
                 odo = odo.getNewRecord(rs);
-                System.out.println("ODO: "+ odo);
-                
+                System.out.println("ODO: " + odo);
+
             } else {
                 odo = null;
             }
         } catch (SQLException ex) {
-            System.out.println("Greska u dbb: "+ex.getMessage());
+            System.out.println("Greska u dbb: " + ex.getMessage());
         } finally {
-            rs.close(); st.close();
+            rs.close();
+            st.close();
         }
         return odo;
     }
-    
+
     public OpstiDomenskiObjekat select1(OpstiDomenskiObjekat odo) throws SQLException {  //mozda treba promeniti
         ResultSet rs = null;
         Statement st = null;
-        
+
         String upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition1();
-        System.out.println("Upit: "+upit);
+        System.out.println("Upit: " + upit);
         boolean signal;
         try {
             st = connection.createStatement();
@@ -115,21 +116,20 @@ public class DBBroker {
                 odo = null;
             }
         } catch (SQLException ex) {
-            System.out.println("Greska u dbb: "+ex.getMessage());
+            System.out.println("Greska u dbb: " + ex.getMessage());
         } finally {
-            rs.close(); st.close();
+            rs.close();
+            st.close();
         }
         return odo;
     }
-    
-   
-    
+
     public List<OpstiDomenskiObjekat> selectAll(OpstiDomenskiObjekat odo) throws SQLException {
         List<OpstiDomenskiObjekat> lista = new ArrayList<>();
         ResultSet rs = null;
         Statement st = null;
         String upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition1();
-        System.out.println("Upit: "+upit);
+        System.out.println("Upit: " + upit);
         boolean signal;
         try {
             st = connection.createStatement();
@@ -141,36 +141,68 @@ public class DBBroker {
         } catch (SQLException ex) {
             Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            rs.close(); st.close();
+            rs.close();
+            st.close();
         }
         return lista;
-    
-    
+
     }
-    
- 
+
+    public Object selectAll1(OpstiDomenskiObjekat odo) throws SQLException {
+        List<OpstiDomenskiObjekat> lista = new ArrayList<>();
+        ResultSet rs = null;
+        Statement st = null;
+        String upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition3();
+        System.out.println("Upit: " + upit);
+        boolean signal;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(upit);
+            while (rs.next()) {
+                OpstiDomenskiObjekat odo1 = odo.getNewRecord(rs);
+                lista.add(odo1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            rs.close();
+            st.close();
+        }
+        return lista;
+    }
 
     public void insert(OpstiDomenskiObjekat odo) {
-       String upit = "INSERT INTO " + odo.getClassName() + " ("+odo.getInsertData()+" )"+" VALUES (" + odo.getAtrValue() + ")";
-       System.out.print("Upit: "+ upit);
-       boolean signal = executeUpdate(upit);
-       if(signal == true) {
-       System.out.println("Uspesno sacuvan objekat u bazi!"); }
-       
-       
+        String upit = "INSERT INTO " + odo.getClassName() + " (" + odo.getInsertData() + " )" + " VALUES (" + odo.getAtrValue() + ")";
+        System.out.print("Upit: " + upit);
+        boolean signal = executeUpdate(upit);
+        if (signal == true) {
+            System.out.println("Uspesno sacuvan objekat u bazi!");
+        }
+
     }
-    
+
     public void update(OpstiDomenskiObjekat odo) {
-       String upit = null;
-       if (odo.getWhereType() == 2) {
-           upit = "UPDATE " + odo.getClassName() + " SET " + odo.setAtrValue2() + " WHERE " + odo.getWhereCondition2();
-       } else {
-       upit = "UPDATE " + odo.getClassName() + " SET " + odo.setAtrValue() + " WHERE " + odo.getWhereCondition2(); }
-       System.out.print("Upit: "+ upit);
-       boolean signal = executeUpdate(upit);
-       if(signal == true) {
-       System.out.println("Uspesno sacuvan objekat u bazi!"); }
-    
+        String upit = null;
+        if (odo.getWhereType() == 2) {
+            upit = "UPDATE " + odo.getClassName() + " SET " + odo.setAtrValue2() + " WHERE " + odo.getWhereCondition2();
+        } else {
+            upit = "UPDATE " + odo.getClassName() + " SET " + odo.setAtrValue() + " WHERE " + odo.getWhereCondition2();
+        }
+        System.out.print("Upit: " + upit);
+        boolean signal = executeUpdate(upit);
+        if (signal == true) {
+            System.out.println("Uspesno sacuvan objekat u bazi!");
+        }
+
+    }
+
+    public void update1(OpstiDomenskiObjekat odo) {
+        String upit = "UPDATE " + odo.getClassName() + " SET " + odo.setAtrValue1() + " WHERE " + odo.getWhereCondition4();
+        System.out.print("Upit: " + upit);
+        boolean signal = executeUpdate(upit);
+        if (signal == true) {
+            System.out.println("Uspesno sacuvan objekat u bazi!");
+        }
     }
 
     public boolean executeUpdate(String upit) {
@@ -194,37 +226,4 @@ public class DBBroker {
         return signal;
     }
 
-    public Object selectAll1(OpstiDomenskiObjekat odo) throws SQLException {
-        List<OpstiDomenskiObjekat> lista = new ArrayList<>();
-        ResultSet rs = null;
-        Statement st = null;
-        String upit = "SELECT * FROM " + odo.getClassName() + " WHERE " + odo.getWhereCondition3();
-        System.out.println("Upit: "+upit);
-        boolean signal;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery(upit);
-            while (rs.next()) {
-                OpstiDomenskiObjekat odo1 = odo.getNewRecord(rs);
-                lista.add(odo1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            rs.close(); st.close();
-        }
-        return lista;
-    }
-
-    public void update1(OpstiDomenskiObjekat odo) {
-       String upit = "UPDATE " + odo.getClassName() + " SET " + odo.setAtrValue1() + " WHERE " + odo.getWhereCondition4();
-       System.out.print("Upit: "+ upit);
-       boolean signal = executeUpdate(upit);
-       if(signal == true) {
-       System.out.println("Uspesno sacuvan objekat u bazi!"); 
-      }
-    }  
-  
 }
-
-    
