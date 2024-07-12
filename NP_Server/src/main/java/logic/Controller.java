@@ -102,6 +102,12 @@ public class Controller {
         return (OpstiDomenskiObjekat)so.getResult();
     }
 
+    public List<OpstiDomenskiObjekat> allFrizeri(OpstiDomenskiObjekat odo14) throws Exception {
+        NadjiFrizereSO so = new NadjiFrizereSO();
+        so.execute(odo14);
+        return (List<OpstiDomenskiObjekat>)so.getResult();
+    }
+
    
     
 }

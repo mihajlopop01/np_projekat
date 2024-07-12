@@ -26,7 +26,8 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
     private Korisnik korisnik;
     private int whereType;
     private int ocena;
-
+    private Usluga usluga;
+    
     public Termin() {
     }
     
@@ -44,6 +45,7 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
         this.slobodan = slobodan;
         this.korisnik = korisnik;
     }
+    
 
     public Termin(Salon salon, Long terminid, String vreme, Date datum, String frizer, boolean slobodan, Korisnik korisnik) {
         this.salon = salon;
@@ -73,6 +75,16 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
         this.terminid = terminid;
     
     }
+
+    public Usluga getUsluga() {
+        return usluga;
+    }
+
+    public void setUsluga(Usluga usluga) {
+        this.usluga = usluga;
+    }
+    
+    
 
     public int getOcena() {
         return ocena;
@@ -165,7 +177,7 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public String getAtrValue() {
-        return salon.getPib() + ", " + "'" + vreme + "'" + ", " + "'" + getDatum(this.datum) + "'" + ", " + "'" + frizer + "'" + ", " + slobodan + ", " + korisnik.getKorisnikid();
+        return salon.getPib() + ", " + "'" + vreme + "'" + ", " + "'" + getDatum(this.datum) + "'" + ", " + "'" + frizer + "'" + ", " + slobodan + ", " + korisnik.getKorisnikid() + ", " + usluga.getUslugaid();
     }
 
     @Override
@@ -175,7 +187,7 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public String getInsertData() {
-        return "PIB,vreme,datum,frizer,slobodan,korisnikid";
+        return "PIB,vreme,datum,frizer,slobodan,korisnikid,uslugaid";
     }
 
     @Override

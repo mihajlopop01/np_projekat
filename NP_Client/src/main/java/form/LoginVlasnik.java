@@ -108,6 +108,7 @@ public class LoginVlasnik extends javax.swing.JFrame {
             }
         } catch (Exception e) {
                JOptionPane.showMessageDialog(this, "Greska: "+e.getMessage());
+               new LoginVlasnik().setVisible(true);
                dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

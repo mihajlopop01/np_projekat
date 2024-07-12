@@ -12,59 +12,50 @@ import java.sql.SQLException;
  *
  * @author Mihajlo Popovic
  */
-public class Frizer extends OpstiDomenskiObjekat implements Serializable{
+public class Usluga extends OpstiDomenskiObjekat implements Serializable{
     
-    private long frizerid;
-    private String ime;
-    private String prezime;
-    private Salon salon;
+    private long uslugaid;
+    private String naziv;
+    private String opis;
 
-    public Frizer() {
+    public Usluga(int par) {
+    }
+    
+    public Usluga(String naziv) {
+        this.naziv = naziv;
     }
 
-    public Frizer(long frizerid, String ime, String prezime, Salon salon) {
-        this.frizerid = frizerid;
-        this.ime = ime;
-        this.prezime = prezime;
-        this.salon = salon;
+    public Usluga(long uslugaid, String naziv, String opis) {
+        this.uslugaid = uslugaid;
+        this.naziv = naziv;
+        this.opis = opis;
     }
 
-    public long getFrizerid() {
-        return frizerid;
+    public long getUslugaid() {
+        return uslugaid;
     }
 
-    public void setFrizerid(long frizerid) {
-        this.frizerid = frizerid;
+    public void setUslugaid(long uslugaid) {
+        this.uslugaid = uslugaid;
     }
 
-    public String getIme() {
-        return ime;
+    public String getNaziv() {
+        return naziv;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
     }
 
-    public String getPrezime() {
-        return prezime;
+    public String getOpis() {
+        return opis;
     }
 
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
+    public void setOpis(String opis) {
+        this.opis = opis;
     }
-
-    public Salon getSalon() {
-        return salon;
-    }
-
-    public void setSalon(Salon salon) {
-        this.salon = salon;
-    }
-
-    @Override
-    public String toString() {
-        return "Frizer: "  + ime + " " + prezime;
-    }
+    
+    
 
     @Override
     public int getWhereType() {
@@ -78,32 +69,32 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public String getClassName() {
-        return "frizer";
-    }
-
-    @Override
-    public String getWhereCondition() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
+    public String getWhereCondition() {
+        return "";
+    }
+
+    @Override
     public OpstiDomenskiObjekat getNewRecord(ResultSet rs) throws SQLException {
-        return new Frizer(rs.getLong("frizerid"), rs.getString("ime"), rs.getString("prezime"), new Salon(rs.getLong("PIB")));
+        return new Usluga(rs.getLong("uslugaid"),rs.getString("naziv"),rs.getString("opis"));
     }
 
     @Override
     public String getAtrValue() {
-        return "'" + ime + "'" + ", " + "'" + prezime + "'" + ", " + salon.getPib();
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String getInsertData() {
-        return "ime,prezime,PIB";
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String getWhereCondition1() {
-        return "PIB = "+'\''+salon.getPib()+'\'';
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -135,7 +126,11 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable{
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public String toString() {
+        return naziv;
+    }
     
     
     

@@ -12,59 +12,40 @@ import java.sql.SQLException;
  *
  * @author Mihajlo Popovic
  */
-public class Frizer extends OpstiDomenskiObjekat implements Serializable{
+public class Placanje extends OpstiDomenskiObjekat implements Serializable{
     
-    private long frizerid;
-    private String ime;
-    private String prezime;
-    private Salon salon;
+    private long placanjeid;
+    private String nacin;
+    
 
-    public Frizer() {
+    public Placanje(int par) {
     }
 
-    public Frizer(long frizerid, String ime, String prezime, Salon salon) {
-        this.frizerid = frizerid;
-        this.ime = ime;
-        this.prezime = prezime;
-        this.salon = salon;
+    public Placanje(long placanjeid, String iznos) {
+        this.placanjeid = placanjeid;
+        this.nacin = iznos;
+        
     }
 
-    public long getFrizerid() {
-        return frizerid;
+    public long getPlacanjeid() {
+        return placanjeid;
     }
 
-    public void setFrizerid(long frizerid) {
-        this.frizerid = frizerid;
+    public void setPlacanjeid(long placanjeid) {
+        this.placanjeid = placanjeid;
     }
 
-    public String getIme() {
-        return ime;
+    public String getNacin() {
+        return nacin;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
+    public void setNacin(String iznos) {
+        this.nacin = iznos;
     }
 
-    public String getPrezime() {
-        return prezime;
-    }
 
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
-    public Salon getSalon() {
-        return salon;
-    }
-
-    public void setSalon(Salon salon) {
-        this.salon = salon;
-    }
-
-    @Override
-    public String toString() {
-        return "Frizer: "  + ime + " " + prezime;
-    }
+    
+    
 
     @Override
     public int getWhereType() {
@@ -78,7 +59,7 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public String getClassName() {
-        return "frizer";
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -88,22 +69,22 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable{
 
     @Override
     public OpstiDomenskiObjekat getNewRecord(ResultSet rs) throws SQLException {
-        return new Frizer(rs.getLong("frizerid"), rs.getString("ime"), rs.getString("prezime"), new Salon(rs.getLong("PIB")));
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String getAtrValue() {
-        return "'" + ime + "'" + ", " + "'" + prezime + "'" + ", " + salon.getPib();
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String getInsertData() {
-        return "ime,prezime,PIB";
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String getWhereCondition1() {
-        return "PIB = "+'\''+salon.getPib()+'\'';
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -135,8 +116,5 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable{
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
-    
     
 }

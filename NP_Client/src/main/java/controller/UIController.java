@@ -220,4 +220,17 @@ public class UIController {
         }
     }
 
+    public List<OpstiDomenskiObjekat> vratiSveFrizere(OpstiDomenskiObjekat odo) throws Exception {
+        Zahtev zahtevKlijenta = new Zahtev(odo, SO.ALLFRIZERI);
+        sender.send(zahtevKlijenta);
+        Odgovor odgovorServera = (Odgovor) receiver.receive();
+        System.out.println("ALL_TERMINI odgovor: " + odgovorServera.getRes());
+        if (odgovorServera.getE() == null) {
+            return (List<OpstiDomenskiObjekat>) odgovorServera.getRes();
+
+        } else {
+            throw odgovorServera.getE();
+        }
+    }
+
 }

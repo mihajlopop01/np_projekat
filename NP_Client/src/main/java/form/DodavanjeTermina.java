@@ -5,10 +5,12 @@
 package form;
 
 import controller.UIController;
+import domen.Frizer;
 import domen.Korisnik;
 import domen.OpstiDomenskiObjekat;
 import domen.Salon;
 import domen.Termin;
+import domen.Usluga;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,6 +39,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
         this.salon = salon;
         initComponents();
         populateTable();
+        populateComboBox();
 
     }
 
@@ -54,13 +58,15 @@ public class DodavanjeTermina extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         txtVreme = new javax.swing.JTextField();
         txtDatum = new javax.swing.JTextField();
-        txtFrizer = new javax.swing.JTextField();
         btnDodajTermin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        cbFrizer = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        cbUsluga = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -107,73 +113,72 @@ public class DodavanjeTermina extends javax.swing.JDialog {
 
         jLabel7.setText("(hh:mm)");
 
+        jLabel8.setText("Usluga");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFrizer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6))
-                            .addComponent(btnDodajTermin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(193, 193, 193))
+                    .addComponent(btnDodajTermin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                        .addComponent(txtVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbFrizer, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbUsluga, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDatum))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(187, 187, 187))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
                     .addComponent(txtVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel2))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbUsluga, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtFrizer, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbFrizer, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(32, 32, 32)
                 .addComponent(btnDodajTermin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -195,7 +200,30 @@ public class DodavanjeTermina extends javax.swing.JDialog {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            termin.setFrizer(txtFrizer.getText().trim());
+            
+            Usluga u = (Usluga)cbUsluga.getItemAt(0);
+            String s = (String)u.getNaziv();
+            
+            switch(s) {
+                case "sisanje":
+                    termin.setUsluga(new Usluga(1));
+                    break;
+                    
+                case "feniranje":
+                    termin.setUsluga(new Usluga(2));    
+                    break;
+                    
+                case "brijanje":
+                    termin.setUsluga(new Usluga(3));
+                    break;
+                    
+                case "farbanje":
+                    termin.setUsluga(new Usluga(3));
+                    break;
+            
+            }
+            
+            termin.setFrizer((String) cbFrizer.getSelectedItem());
             termin.setSlobodan(true);
             termin.setKorisnik(new Korisnik(1, "", "", "", ""));
 
@@ -217,6 +245,8 @@ public class DodavanjeTermina extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajTermin;
+    private javax.swing.JComboBox<String> cbFrizer;
+    private javax.swing.JComboBox<Object> cbUsluga;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,10 +254,10 @@ public class DodavanjeTermina extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtDatum;
-    private javax.swing.JTextField txtFrizer;
     private javax.swing.JTextField txtVreme;
     // End of variables declaration//GEN-END:variables
 
@@ -255,7 +285,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
     }
 
     private boolean proveriTermin(Termin termin) {
-        
+
         try {
             List<OpstiDomenskiObjekat> termini = UIController.getInstance().allTermini(termin);
             List<String> vremena = new ArrayList<>();
@@ -263,14 +293,49 @@ public class DodavanjeTermina extends javax.swing.JDialog {
                 Termin t = (Termin) odo;
                 String vreme = t.getVreme();
                 vremena.add(vreme);
-                
+
             }
-            if(vremena.contains(termin.getVreme())) 
+            if (vremena.contains(termin.getVreme())) {
                 return false;
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private void populateComboBox() {
+        Frizer frizer = new Frizer();
+        frizer.setSalon(salon);
+        try {
+            List<OpstiDomenskiObjekat> listaFrizera = UIController.getInstance().vratiSveFrizere(frizer);
+            if (listaFrizera.size() == 0 || listaFrizera == null) {
+                cbFrizer.removeAllItems();
+                cbFrizer.setModel(new DefaultComboBoxModel(listaFrizera.toArray()));
+                cbFrizer.addItem("NEMA UBACENIH FRIZERA");
+
+            } else {
+                cbFrizer.removeAllItems();
+                cbFrizer.setModel(new DefaultComboBoxModel());
+                for (OpstiDomenskiObjekat odo: listaFrizera) {
+                    Frizer f = (Frizer)odo;
+                    cbFrizer.addItem(f.getIme());
+                
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        List<Usluga> usluge = new ArrayList<>();
+        usluge.add(new Usluga(1, "sisanje", "Sisanje klijenata"));
+        usluge.add(new Usluga(2, "feniranje", "Feniranje kose"));
+        usluge.add(new Usluga(3, "brijanje","brijanje brade"));
+        usluge.add(new Usluga(4,"fabranje","farbanje kose"));
+        
+        
+        cbUsluga.setModel(new DefaultComboBoxModel(usluge.toArray()));
+
     }
 }

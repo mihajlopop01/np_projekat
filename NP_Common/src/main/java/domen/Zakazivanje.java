@@ -17,6 +17,7 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable{
     private int zakazivanjeid;
     private Salon salon;
     private Korisnik korisnik;
+    private Placanje placanje;
     private int cena;
     private int trajanje;
     private int whereType;
@@ -24,11 +25,20 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable{
     public Zakazivanje() {
     }
 
-    public Zakazivanje(Salon salon, Korisnik korisnik, int cena, int trajanje) {
+    public Zakazivanje(Salon salon, Korisnik korisnik, int cena, int trajanje, Placanje placanje) {
         this.salon = salon;
         this.korisnik = korisnik;
         this.cena = cena;
         this.trajanje = trajanje;
+        this.placanje = placanje;
+    }
+
+    public Placanje getPlacanje() {
+        return placanje;
+    }
+
+    public void setPlacanje(Placanje placanje) {
+        this.placanje = placanje;
     }
 
     public Zakazivanje(int cena,int trajanje) {

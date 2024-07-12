@@ -6,6 +6,7 @@ db\DatabaseConnection.class
 logic\so\NadjiTerminSO.class
 db\DBBroker.class
 logic\Controller.class
+logic\so\NadjiFrizereSO.class
 main\Main.class
 logic\so\NadjiTerminSO1.class
 logic\so\AzurirajTerminSO.class

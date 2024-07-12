@@ -5,6 +5,7 @@
 package niti;
 
 import communication.*;
+import static communication.SO.ALLFRIZERI;
 import static communication.SO.ALLTERMINI;
 import static communication.SO.GETONESALON;
 import static communication.SO.UBACIFRIZERA;
@@ -67,7 +68,7 @@ public class KlijentskaNit extends Thread{
                             OpstiDomenskiObjekat obj = controller.zapamti_salon(odo);
                             odgovorServera.setRes(obj);
                             break;
-                            
+     
                         case ALLTERMINI:
                             OpstiDomenskiObjekat odo1 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             List<OpstiDomenskiObjekat> lista = controller.allTermini(odo1);
@@ -130,8 +131,15 @@ public class KlijentskaNit extends Thread{
                             OpstiDomenskiObjekat v14 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
                             System.out.println("CASE: UBACI_FRIZERA: "+v14);
                             OpstiDomenskiObjekat v15 = controller.zapamtiFrizera(v14);
-                             
-                             break;
+                            break;
+                            
+                         case ALLFRIZERI:
+                            OpstiDomenskiObjekat odo14 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
+                            List<OpstiDomenskiObjekat> odo15 = controller.allFrizeri(odo14);
+                            System.out.println("CASE: ALLFRIZERI: "+ odo15);
+                            odgovorServera.setRes(odo15);
+                            
+                            break;
                             
                          case UPDATETERMIN1:
                             OpstiDomenskiObjekat odo12 = (OpstiDomenskiObjekat)zahtevKlijenta.getArg();
@@ -140,11 +148,14 @@ public class KlijentskaNit extends Thread{
                             System.out.println("CASE: UPDATETERMINI: "+ odo13);
                             odgovorServera.setRes(odo13);
                             break;
+                            
+                         
 
                     }
                 } catch (Exception e) {
                     odgovorServera.setE(e);
                     System.out.println("Greska u switchu "+ e.getMessage());
+                    e.printStackTrace();
                     greske++;
                     if(greske > 20)
                         this.stop();
