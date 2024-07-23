@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -13,20 +14,59 @@ import java.util.Objects;
  *
  * @author Mihajlo Popovic
  */
-public class Vlasnik extends OpstiDomenskiObjekat implements Serializable{
-    
-    private long vlasnikid;
-    private String ime;
-    private String prezime;
-    private String email;
-    private String sifra;
-    private int whereType;
-    
-   
+/**
+ * Predstavlja vlasnika u sistemu. Klasa Vlasnik nasledjuje klasu
+ * OpstiDomenskiObjekat i implementira intefejs Serializable. Vlasnik ima svoj
+ * ID, ime, prezime, email i šifru.
+ *
+ * @autor Mihajlo Popovic
+ * @version 1.0
+ */
+public class Vlasnik extends OpstiDomenskiObjekat implements Serializable {
 
+    /**
+     * ID vlasnika kao long
+     */
+    private long vlasnikid;
+    /**
+     * Ime vlasnika kao String
+     */
+    private String ime;
+    /**
+     * Prezime vlasnika kao String
+     */
+    private String prezime;
+    /**
+     * Email vlasnika kao String
+     */
+    private String email;
+    /**
+     * Šifra vlasnika kao String
+     */
+    private String sifra;
+    /**
+     * Tip WHERE uslova kao int
+     */
+    private int whereType;
+
+    /**
+     * Pravi nov objekat klase Vlasnik.
+     *
+     * Atributi ostaju neinicijalizovani.
+     */
     public Vlasnik() {
     }
 
+    /**
+     * Pravi nov objekat klase Vlasnik i postavlja vlasnikid, ime, prezime,
+     * email i šifru na unete vrednosti.
+     *
+     * @param vlasnikid ID vlasnika kao long
+     * @param ime Ime vlasnika kao String
+     * @param prezime Prezime vlasnika kao String
+     * @param email Email vlasnika kao String
+     * @param sifra Šifra vlasnika kao String
+     */
     public Vlasnik(long vlasnikid, String ime, String prezime, String email, String sifra) {
         this.vlasnikid = vlasnikid;
         this.ime = ime;
@@ -35,77 +75,159 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable{
         this.sifra = sifra;
     }
 
-    public long getVlasnikid() {
-        return vlasnikid;
-    }
-
+    /**
+     * Pravi nov objekat klase Vlasnik sa datim emailom i šifrom.
+     *
+     * @param email Email vlasnika kao String
+     * @param sifra Šifra vlasnika kao String
+     */
     public Vlasnik(String email, String sifra) {
         this.email = email;
         this.sifra = sifra;
     }
 
+    /**
+     * Pravi nov objekat klase Vlasnik sa datim imenom, prezimenom, emailom i
+     * šifrom.
+     *
+     * @param ime Ime vlasnika kao String
+     * @param prezime Prezime vlasnika kao String
+     * @param email Email vlasnika kao String
+     * @param sifra Šifra vlasnika kao String
+     */
     public Vlasnik(String ime, String prezime, String email, String sifra) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
         this.sifra = sifra;
     }
-    
-    public Vlasnik(long vlasnikid) {
-        this.vlasnikid=vlasnikid;
-    }
-    
-    
-    
-    
 
+    /**
+     * Pravi nov objekat klase Vlasnik sa datim ID-em.
+     *
+     * @param vlasnikid ID vlasnika kao long
+     */
+    public Vlasnik(long vlasnikid) {
+        this.vlasnikid = vlasnikid;
+    }
+
+    /**
+     * Vraca ID vlasnika.
+     *
+     * @return trenutni ID vlasnika kao long
+     */
+    public long getVlasnikid() {
+        return vlasnikid;
+    }
+
+    /**
+     * Postavlja ID vlasnika na unetu vrednost.
+     *
+     * @param vlasnikid ID vlasnika kao long
+     */
     public void setVlasnikid(long vlasnikid) {
         this.vlasnikid = vlasnikid;
     }
 
+    /**
+     * Vraca ime vlasnika.
+     *
+     * @return trenutno ime vlasnika kao String
+     */
     public String getIme() {
         return ime;
     }
 
+    /**
+     * Postavlja ime vlasnika na unetu vrednost.
+     *
+     * @param ime ime vlasnika kao String
+     */
     public void setIme(String ime) {
         this.ime = ime;
     }
 
+    /**
+     * Vraca prezime vlasnika.
+     *
+     * @return trenutno prezime vlasnika kao String
+     */
     public String getPrezime() {
         return prezime;
     }
 
+    /**
+     * Postavlja prezime vlasnika na unetu vrednost.
+     *
+     * @param prezime prezime vlasnika kao String
+     */
     public void setPrezime(String prezime) {
         this.prezime = prezime;
     }
 
+    /**
+     * Vraca email vlasnika.
+     *
+     * @return trenutni email vlasnika kao String
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Postavlja email vlasnika na unetu vrednost.
+     *
+     * @param email email vlasnika kao String
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Vraca šifru vlasnika.
+     *
+     * @return trenutna šifra vlasnika kao String
+     */
     public String getSifra() {
         return sifra;
     }
 
+    /**
+     * Postavlja šifru vlasnika na unetu vrednost.
+     *
+     * @param sifra šifra vlasnika kao String
+     */
     public void setSifra(String sifra) {
         this.sifra = sifra;
     }
 
+    /**
+     * Vraca string reprezentaciju objekta Vlasnik.
+     *
+     * @return string reprezentacija objekta Vlasnik
+     */
     @Override
     public String toString() {
-        return "Vlasnik: "+ime+" "+prezime+" Email: "+email;
+        return "Vlasnik: " + ime + " " + prezime + " Email: " + email;
     }
 
+    /**
+     * Vraca hash kod objekta Vlasnik.
+     *
+     * @return hash kod objekta Vlasnik kao int
+     */
     @Override
     public int hashCode() {
         int hash = 7;
         return hash;
     }
 
+    /**
+     * Poredi dva objekta Vlasnik po emailu i šifri.
+     *
+     * @param obj objekat za poređenje
+     * @return true ako su objekti jednaki, false inače
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -124,34 +246,86 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable{
         return Objects.equals(this.sifra, other.sifra);
     }
 
+    /**
+     * Vraca naziv klase.
+     *
+     * @return naziv klase kao String
+     */
     @Override
     public String getClassName() {
         return "vlasnik";
     }
 
+    /**
+     * Vraca uslov za WHERE klauzulu.
+     *
+     * @return uslov za WHERE klauzulu kao String
+     */
     @Override
     public String getWhereCondition() {
-        return "email = "+'\''+email+'\''+" AND "+"sifra = "+'\''+sifra+'\'';
+        return "email = " + '\'' + email + '\'' + " AND " + "sifra = " + '\'' + sifra + '\'';
     }
 
+    /**
+     * Kreira novi zapis iz ResultSet-a.
+     *
+     * @param rs ResultSet iz baze podataka
+     * @return novi objekat klase OpstiDomenskiObjekat
+     * @throws SQLException ako dodje do greske pri radu sa bazom podataka
+     */
     @Override
-    public OpstiDomenskiObjekat getNewRecord(ResultSet rs) throws SQLException{
-        return new Vlasnik(rs.getLong("vlasnikid"),rs.getString("ime"),rs.getString("prezime"),rs.getString("email"),rs.getString("sifra"));
+    public OpstiDomenskiObjekat getNewRecord(ResultSet rs) throws SQLException {
+        return new Vlasnik(rs.getLong("vlasnikid"), rs.getString("ime"), rs.getString("prezime"), rs.getString("email"), rs.getString("sifra"));
     }
 
+    /**
+     * Vraca vrednosti atributa kao string za unos u bazu.
+     *
+     * @return vrednosti atributa kao String
+     */
     @Override
     public String getAtrValue() {
-       return vlasnikid + ", " + "'" + ime + "'" + ", " + "'" + prezime + "'" + ", " + "'" + email + "'" + ", " + "'" + sifra + "'";
+        return vlasnikid + ", " + "'" + ime + "'" + ", " + "'" + prezime + "'" + ", " + "'" + email + "'" + ", " + "'" + sifra + "'";
     }
 
+    /**
+     * Vraca nazive atributa za unos u bazu.
+     *
+     * @return nazive atributa kao String
+     */
     @Override
     public String getInsertData() {
-       return "vlasnikid,ime,prezime,email,sifra";
+        return "vlasnikid, ime, prezime, email, sifra";
     }
 
+    /**
+     * Vraca uslov za WHERE klauzulu po vlasnikid-u.
+     *
+     * @return uslov za WHERE klauzulu kao String
+     */
     @Override
     public String getWhereCondition1() {
-        return "vlasnikid = "+'\''+vlasnikid+'\'';
+        return "vlasnikid = " + '\'' + vlasnikid + '\'';
+    }
+
+    /**
+     * Vraca tip WHERE uslova.
+     *
+     * @return tip WHERE uslova kao int
+     */
+    @Override
+    public int getWhereType() {
+        return this.whereType;
+    }
+
+    /**
+     * Postavlja tip WHERE uslova.
+     *
+     * @param whereType tip WHERE uslova kao int
+     */
+    @Override
+    public void setWhereType(int whereType) {
+        this.whereType = whereType;
     }
 
     @Override
@@ -180,22 +354,9 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable{
     }
 
     @Override
-    public int getWhereType() {
-        return this.whereType;
-    }
-
-    @Override
-    public void setWhereType(int whereType) {
-        this.whereType = whereType;
-    }
-
-    @Override
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
-    
-    
-    
+
 }
+
