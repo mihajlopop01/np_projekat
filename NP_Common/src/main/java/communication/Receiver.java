@@ -18,10 +18,18 @@ public class Receiver {
     
     private Socket socket;
 
+    /**
+     *
+     * @param socket
+     */
     public Receiver(Socket socket) {
         this.socket = socket;
     }
     
+    /**
+     *
+     * @return
+     */
     public Object receive() {
         try {
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());

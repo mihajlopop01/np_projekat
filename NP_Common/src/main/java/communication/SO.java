@@ -10,6 +10,84 @@ package communication;
  */
 public enum SO {
     
-    LOGIN, GETONETERMIN, ZAPAMTISALON, UPDATE, ALLTERMINI, DELETE, REGISTER, ALLSALONI, ZAPAMTITERMIN, GETONESALON, UPDATETERMIN, GETONEZAKAZIVANJE, ALLTERMINI1, UPDATETERMIN1, UBACIFRIZERA, ALLFRIZERI;
+    /**
+     *
+     */
+    LOGIN,
+
+    /**
+     *
+     */
+    GETONETERMIN,
+
+    /**
+     *
+     */
+    ZAPAMTISALON,
+
+    /**
+     *
+     */
+    UPDATE,
+
+    /**
+     *
+     */
+    ALLTERMINI,
+
+    /**
+     *
+     */
+    DELETE,
+
+    /**
+     *
+     */
+    REGISTER,
+
+    /**
+     *
+     */
+    ALLSALONI,
+
+    /**
+     *
+     */
+    ZAPAMTITERMIN,
+
+    /**
+     *
+     */
+    GETONESALON,
+
+    /**
+     *
+     */
+    UPDATETERMIN,
+
+    /**
+     *
+     */
+    GETONEZAKAZIVANJE,
+
+    /**
+     *
+     */
+    ALLTERMINI1,
+
+    /**
+     *
+     */
+    UPDATETERMIN1,
+
+    /**
+     *
+     */
+    UBACIFRIZERA,
+
+    /**
+     *
+     */
+    ALLFRIZERI;
     
 }

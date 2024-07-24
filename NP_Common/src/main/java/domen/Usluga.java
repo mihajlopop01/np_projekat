@@ -122,6 +122,10 @@ public class Usluga extends OpstiDomenskiObjekat implements Serializable {
         return "";
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return naziv;

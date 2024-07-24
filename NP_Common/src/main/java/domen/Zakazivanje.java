@@ -9,9 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Predstavlja zakazivanje u salonu.
- * Klasa Zakazivanje nasleđuje klasu OpstiDomenskiObjekat i implementira interfejs Serializable.
- * Zakazivanje sadrži informacije o salonu, korisniku, plačanju, ceni i trajanju zakazivanja.
+ * Predstavlja zakazivanje u salonu. Klasa Zakazivanje nasleđuje klasu
+ * OpstiDomenskiObjekat i implementira interfejs Serializable. Zakazivanje
+ * sadrži informacije o salonu, korisniku, plačanju, ceni i trajanju
+ * zakazivanja.
  *
  * @autor Mihajlo Popović
  * @verzija 1.0
@@ -60,13 +61,17 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Kreira novi objekat klase Zakazivanje i postavlja salon, korisnika, cenu, trajanje i plačanje na zadate vrednosti.
+     * Kreira novi objekat klase Zakazivanje i postavlja salon, korisnika, cenu,
+     * trajanje i plačanje na zadate vrednosti.
      *
-     * @param salon Salon u kojem je zakazivanje obavljeno kao objekat klase Salon
-     * @param korisnik Korisnik koji je napravio zakazivanje kao objekat klase Korisnik
+     * @param salon Salon u kojem je zakazivanje obavljeno kao objekat klase
+     * Salon
+     * @param korisnik Korisnik koji je napravio zakazivanje kao objekat klase
+     * Korisnik
      * @param cena Cena zakazivanja kao int
      * @param trajanje Trajanje zakazivanja u minutima kao int
-     * @param placanje Plačanje povezano sa zakazivanjem kao objekat klase Placanje
+     * @param placanje Plačanje povezano sa zakazivanjem kao objekat klase
+     * Placanje
      */
     public Zakazivanje(Salon salon, Korisnik korisnik, int cena, int trajanje, Placanje placanje) {
         this.salon = salon;
@@ -117,7 +122,8 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
     /**
      * Postavlja salon za zakazivanje na zadatu vrednost.
      *
-     * @param salon Salon u kojem je zakazivanje obavljeno kao objekat klase Salon
+     * @param salon Salon u kojem je zakazivanje obavljeno kao objekat klase
+     * Salon
      */
     public void setSalon(Salon salon) {
         this.salon = salon;
@@ -135,7 +141,8 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
     /**
      * Postavlja korisnika za zakazivanje na zadatu vrednost.
      *
-     * @param korisnik Korisnik koji je napravio zakazivanje kao objekat klase Korisnik
+     * @param korisnik Korisnik koji je napravio zakazivanje kao objekat klase
+     * Korisnik
      */
     public void setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
@@ -177,61 +184,151 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
         this.trajanje = trajanje;
     }
 
+/**
+     * Vraća naziv klase.
+     *
+     * @return naziv klase kao String
+     */
     @Override
     public String getClassName() {
         return "zakazivanje";
     }
 
+    /**
+     * Vraća uslov za WHERE klauzulu u SQL upitu na osnovu PIB-a salona.
+     *
+     * @return uslov za WHERE klauzulu kao String
+     */
     @Override
     public String getWhereCondition() {
-        return "PIB = " + '\'' + salon.getPib() + '\''; 
+        return "PIB = " + '\'' + salon.getPib() + '\'';
     }
 
+    /**
+     * Kreira novi objekat klase Zakazivanje na osnovu podataka iz ResultSet-a.
+     *
+     * @param rs ResultSet iz baze podataka
+     * @return novi objekat klase Zakazivanje
+     * @throws SQLException ako dođe do greške pri radu sa bazom podataka
+     */
     @Override
     public OpstiDomenskiObjekat getNewRecord(ResultSet rs) throws SQLException {
         return new Zakazivanje(rs.getInt("cena"), rs.getInt("trajanje"));
     }
 
+    /**
+     * Vraća vrednosti atributa objekta kao string za unos u bazu.
+     *
+     * @return vrednosti atributa kao String
+     */
     @Override
     public String getAtrValue() {
         return salon.getPib() + ", " + korisnik.getKorisnikid() + ", " + cena + ", " + trajanje;
     }
 
+    /**
+     * Vraća nazive atributa za unos u bazu.
+     *
+     * @return nazivi atributa kao String
+     */
     @Override
     public String getInsertData() {
         return "PIB, korisnikid, cena, trajanje";
     }
 
+    /**
+     * Vraća uslov za WHERE klauzulu u SQL upitu na osnovu PIB-a salona.
+     *
+     * @return uslov za WHERE klauzulu kao String
+     */
     @Override
     public String getWhereCondition1() {
-        return "PIB = " + '\'' + salon.getPib() + '\''; 
-    }
-
-    @Override
-    public String getWhereCondition2() {
-        return "PIB = " + '\'' + salon.getPib() + '\''; 
-    }
-
-    @Override
-    public String toString() {
-        return "Zakazivanje: " + cena + " " + trajanje; 
+        return "PIB = " + '\'' + salon.getPib() + '\'';
     }
 
     /**
-     * Vraća detaljne informacije o zakazivanju.
+     * Vraća uslov za WHERE klauzulu u SQL upitu na osnovu PIB-a salona.
+     *
+     * @return uslov za WHERE klauzulu kao String
+     */
+    @Override
+    public String getWhereCondition2() {
+        return "PIB = " + '\'' + salon.getPib() + '\'';
+    }
+
+    /**
+     * Vraća string reprezentaciju objekta Zakazivanje.
+     *
+     * @return string reprezentacija objekta Zakazivanje
+     */
+    @Override
+    public String toString() {
+        return "Zakazivanje: " + cena + " " + trajanje;
+    }
+
+    /**
+     * Vraća detaljan opis zakazivanja uključujući PIB salona i ID korisnika.
      *
      * @return detaljan opis zakazivanja kao String
      */
     public String toString1() {
-        return "Zakazivanje: " + cena + " " + trajanje + " " + salon.getPib() + " " + korisnik.getKorisnikid(); 
+        return "Zakazivanje: " + cena + " " + trajanje + " " + salon.getPib() + " " + korisnik.getKorisnikid();
     }
 
+    /**
+     * Postavlja vrednost atributa korisnikid za unos u bazu.
+     *
+     * @return string sa vrednostima atributa za unos u bazu
+     */
     @Override
     public String setAtrValue() {
         return "korisnikid=" + korisnik.getKorisnikid();
     }
 
+    /**
+     * Vraća tip WHERE uslova koji se koristi u SQL upitima.
+     *
+     * @return tip WHERE uslova kao int
+     */
     @Override
+    public int getWhereType() {
+        return this.whereType;
+    }
+
+    /**
+     * Postavlja tip WHERE uslova koji se koristi u SQL upitima.
+     *
+     * @param whereType tip WHERE uslova kao int
+     */
+    @Override
+    public void setWhereType(int whereType) {
+        this.whereType = whereType;
+    }
+
+    /**
+     * Postavlja plačanje povezano sa zakazivanjem.
+     *
+     * @param placanje objekat klase Placanje
+     */
+    public void setPlacanje(Placanje placanje) {
+        this.placanje = placanje;
+    }
+
+    /**
+     * Vraća plačanje povezano sa zakazivanjem.
+     *
+     * @return objekat klase Placanje
+     */
+    public Placanje getPlacanje() {
+        return placanje;
+    }
+
+    @Override
+    public String setAtrValue2() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+        @Override
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -246,30 +343,4 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public int getWhereType() {
-        return this.whereType;
-    }
-
-    @Override
-    public void setWhereType(int whereType) {
-        this.whereType = whereType;
-    }
-
-    @Override
-    public String setAtrValue2() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setPlacanje(Placanje placanje) {
-        this.placanje = placanje;
-    }
-
-   
-        
-    
-    
-    
-    
-    
 }

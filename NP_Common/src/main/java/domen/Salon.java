@@ -375,6 +375,16 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    /**
+     * Vraća listu termina salona.
+     *
+     * @return lista salona termina.
+     */
+    public List<Termin> getTermini() {
+        return termini;
+    }
+    
+    
 
 }
 

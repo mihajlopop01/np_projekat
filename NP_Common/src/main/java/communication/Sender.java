@@ -16,10 +16,18 @@ public class Sender {
     
     private Socket socket;
 
+    /**
+     *
+     * @param socket
+     */
     public Sender(Socket socket) {
         this.socket = socket;
     }
     
+    /**
+     *
+     * @param o
+     */
     public void send(Object o) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
