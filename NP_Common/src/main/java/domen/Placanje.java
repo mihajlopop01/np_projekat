@@ -7,15 +7,18 @@ package domen;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * Predstavlja način plačanja.
- * Klasa Placanje nasleđuje klasu OpstiDomenskiObjekat i implementira interfejs Serializable.
- * Placanje ima svoj ID i način plačanja.
+ * Predstavlja način plačanja. Klasa Placanje nasleđuje klasu
+ * OpstiDomenskiObjekat i implementira interfejs Serializable. Placanje ima svoj
+ * ID i način plačanja.
  *
  * @autor Mihajlo Popović
  * @verzija 1.0
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Placanje extends OpstiDomenskiObjekat implements Serializable {
 
     /**
@@ -37,7 +40,8 @@ public class Placanje extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Kreira novi objekat klase Placanje i postavlja ID i način plačanja na zadate vrednosti.
+     * Kreira novi objekat klase Placanje i postavlja ID i način plačanja na
+     * zadate vrednosti.
      *
      * @param placanjeid ID plačanja kao long
      * @param iznos Način plačanja kao String
@@ -83,76 +87,89 @@ public class Placanje extends OpstiDomenskiObjekat implements Serializable {
         this.nacin = iznos;
     }
 
-
+    @JsonIgnore
 
     @Override
     public int getWhereType() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public void setWhereType(int whereType) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getClassName() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getWhereCondition() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public OpstiDomenskiObjekat getNewRecord(ResultSet rs) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getAtrValue() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getInsertData() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getWhereCondition1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getWhereCondition2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String setAtrValue() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String setAtrValue1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @JsonIgnore
     @Override
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

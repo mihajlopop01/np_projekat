@@ -20,8 +20,33 @@
     <version>5.5.0</version>
     <scope>test</scope>
 </dependency>
-    </dependencies>  
+        <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.13.3</version>
+</dependency>
+    </dependencies> 
+     
     <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <skip>true</skip>
+            </configuration>
+            <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        
+                    </execution>
+                </executions>
+        </plugin>
+    </plugins>
+</build>
+
+<!--    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -37,7 +62,7 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 
     

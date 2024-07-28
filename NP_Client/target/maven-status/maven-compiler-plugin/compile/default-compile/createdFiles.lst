@@ -1,3 +1,4 @@
+form\IzmenaTermina$3.class
 form\DodavanjeSalona$1.class
 form\VlasnikMainForm$2.class
 form\OcenjivanjeSalona$1.class
@@ -26,6 +27,7 @@ form\IzmenaTerminaDialog$2.class
 form\RegisterVlasnik$1.class
 form\IzmenaTermina$2.class
 form\PrikazTermina$2.class
+form\JsonUtil.class
 form\StartVlasnik$1.class
 form\PrikazSalona.class
 form\ZakazivanjeTermina.class

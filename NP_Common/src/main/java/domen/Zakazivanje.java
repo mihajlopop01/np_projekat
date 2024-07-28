@@ -7,6 +7,8 @@ package domen;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Predstavlja zakazivanje u salonu. Klasa Zakazivanje nasleđuje klasu
@@ -17,6 +19,7 @@ import java.sql.SQLException;
  * @autor Mihajlo Popović
  * @verzija 1.0
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
 
     /**
@@ -322,22 +325,22 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
     public Placanje getPlacanje() {
         return placanje;
     }
-
+@JsonIgnore
     @Override
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+    @JsonIgnore
         @Override
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+@JsonIgnore
     @Override
     public String setAtrValue1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+@JsonIgnore
     @Override
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

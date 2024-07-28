@@ -10,8 +10,8 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Predstavlja salon.
@@ -21,6 +21,7 @@ import java.util.ArrayList;
  * @autor Mihajlo Popovic
  * @verzija 1.0
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Salon extends OpstiDomenskiObjekat implements Serializable {
 
     /**
@@ -339,42 +340,52 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     public void setWhereType(int whereType) {
         this.whereType = whereType;
     }
-     /**
+
+    /**
      * Metoda nije podržana.
      *
-     * @throws UnsupportedOperationException uvek. */
-
+     * @throws UnsupportedOperationException uvek.
+     */
+    @JsonIgnore
     @Override
     public String setAtrValue() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- /**
+
+    /**
      * Metoda nije podržana.
      *
-     * @throws UnsupportedOperationException uvek. */
-
+     * @throws UnsupportedOperationException uvek.
+     */
+    @JsonIgnore
     @Override
+
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- /**
+
+    /**
      * Metoda nije podržana.
      *
-     * @throws UnsupportedOperationException uvek. */
-
+     * @throws UnsupportedOperationException uvek.
+     */
+    @JsonIgnore
     @Override
     public String setAtrValue1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- /**
+
+    /**
      * Metoda nije podržana.
      *
-     * @throws UnsupportedOperationException uvek. */
-
+     * @throws UnsupportedOperationException uvek.
+     */
+    @JsonIgnore
     @Override
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     /**
      * Vraća listu termina salona.
      *
@@ -383,8 +394,5 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     public List<Termin> getTermini() {
         return termini;
     }
-    
-    
 
 }
-

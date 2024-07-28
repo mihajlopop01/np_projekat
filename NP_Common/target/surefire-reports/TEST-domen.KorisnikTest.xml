@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="domen.KorisnikTest" time="0.068" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="domen.KorisnikTest" time="0.049" tests="15" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
-    <property name="sun.java.command" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire557870004563781017\surefirebooter-20240724200853745_3.jar C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire557870004563781017 2024-07-24T20-08-53_524-jvmRun1 surefire-20240724200853745_1tmp surefire_0-20240724200853745_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire15085549967331091398\surefirebooter-20240727205619175_3.jar C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire15085549967331091398 2024-07-27T20-56-18_982-jvmRun1 surefire-20240727205619175_1tmp surefire_0-20240727205619175_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Mihajlo Popovic"/>
     <property name="user.language" value="en"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire557870004563781017\surefirebooter-20240724200853745_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire15085549967331091398\surefirebooter-20240727205619175_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="20.0.1+9-29"/>
@@ -59,19 +59,19 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="testGetKorisnikid" classname="domen.KorisnikTest" time="0.002"/>
-  <testcase name="testGetEmail" classname="domen.KorisnikTest" time="0.001"/>
-  <testcase name="testGetSifra" classname="domen.KorisnikTest" time="0.002"/>
+  <testcase name="testGetKorisnikid" classname="domen.KorisnikTest" time="0.001"/>
+  <testcase name="testGetEmail" classname="domen.KorisnikTest" time="0.002"/>
+  <testcase name="testGetSifra" classname="domen.KorisnikTest" time="0.001"/>
   <testcase name="testSetKorisnikid" classname="domen.KorisnikTest" time="0.002"/>
-  <testcase name="testToString" classname="domen.KorisnikTest" time="0.001"/>
-  <testcase name="testGetPrezime" classname="domen.KorisnikTest" time="0.002"/>
-  <testcase name="testGetClassName" classname="domen.KorisnikTest" time="0.001"/>
-  <testcase name="testGetWhereCondition" classname="domen.KorisnikTest" time="0.004"/>
-  <testcase name="testEquals" classname="domen.KorisnikTest" time="0.016"/>
-  <testcase name="testGetIme" classname="domen.KorisnikTest" time="0.004"/>
-  <testcase name="testNotEquals" classname="domen.KorisnikTest" time="0.003"/>
-  <testcase name="testSetIme" classname="domen.KorisnikTest" time="0.001"/>
-  <testcase name="testSetPrezime" classname="domen.KorisnikTest" time="0.002"/>
-  <testcase name="testSetEmail" classname="domen.KorisnikTest" time="0.002"/>
-  <testcase name="testSetSifra" classname="domen.KorisnikTest" time="0.001"/>
+  <testcase name="testToString" classname="domen.KorisnikTest" time="0.002"/>
+  <testcase name="testGetPrezime" classname="domen.KorisnikTest" time="0.001"/>
+  <testcase name="testGetClassName" classname="domen.KorisnikTest" time="0.002"/>
+  <testcase name="testGetWhereCondition" classname="domen.KorisnikTest" time="0.003"/>
+  <testcase name="testEquals" classname="domen.KorisnikTest" time="0.003"/>
+  <testcase name="testGetIme" classname="domen.KorisnikTest" time="0.002"/>
+  <testcase name="testNotEquals" classname="domen.KorisnikTest" time="0.004"/>
+  <testcase name="testSetIme" classname="domen.KorisnikTest" time="0.002"/>
+  <testcase name="testSetPrezime" classname="domen.KorisnikTest" time="0.001"/>
+  <testcase name="testSetEmail" classname="domen.KorisnikTest" time="0.001"/>
+  <testcase name="testSetSifra" classname="domen.KorisnikTest" time="0.002"/>
 </testsuite>

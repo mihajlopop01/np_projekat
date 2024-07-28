@@ -1,0 +1,366 @@
+[
+  {
+    "salon": {
+      "pib": 2,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 2,
+    "vreme": "11:15",
+    "datum": "Oct 10, 2024",
+    "frizer": "Petko",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 2,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 5,
+    "vreme": "10:15",
+    "datum": "Oct 10, 2001",
+    "frizer": "Petko",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 5
+  },
+  {
+    "salon": {
+      "pib": 78909,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 6,
+    "vreme": "11:00",
+    "datum": "Nov 11, 2023",
+    "frizer": "Eva",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 8
+  },
+  {
+    "salon": {
+      "pib": 78909,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 10,
+    "vreme": "11:00",
+    "datum": "Dec 3, 2024",
+    "frizer": "Eva",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 78909,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 11,
+    "vreme": "10:11",
+    "datum": "Mar 18, 2023",
+    "frizer": "Toni",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 10
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 8,
+    "vreme": "10:30",
+    "datum": "Oct 1, 2020",
+    "frizer": "Eva",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 9,
+    "vreme": "10:00",
+    "datum": "Mar 12, 2024",
+    "frizer": "Danica",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 14,
+    "vreme": "10:00",
+    "datum": "May 13, 0017",
+    "frizer": "Petar",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 15,
+    "vreme": "11:00",
+    "datum": "Oct 10, 2024",
+    "frizer": "Petar",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 33,
+    "vreme": "10:45",
+    "datum": "Mar 18, 2024",
+    "frizer": "Eva",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 34,
+    "vreme": "12:00",
+    "datum": "Oct 11, 2024",
+    "frizer": "Stojanovska",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 35,
+    "vreme": "13:00",
+    "datum": "Sept 10, 2024",
+    "frizer": "Toni",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 36,
+    "vreme": "14:00",
+    "datum": "Oct 10, 2024",
+    "frizer": "Eva",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 37,
+    "vreme": "14:15",
+    "datum": "Oct 20, 2022",
+    "frizer": "Petko",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 9
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 38,
+    "vreme": "15:00",
+    "datum": "Dec 3, 2025",
+    "frizer": "Danica",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 39,
+    "vreme": "16:00",
+    "datum": "Dec 4, 2024",
+    "frizer": "Petko",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 123468,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 40,
+    "vreme": "13:50",
+    "datum": "Oct 24, 2024",
+    "frizer": "Danica",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 1234560,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 3,
+    "vreme": "100:00",
+    "datum": "Oct 10, 2020",
+    "frizer": "Petar",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 1234560,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 4,
+    "vreme": "10:00",
+    "datum": "Oct 11, 2020",
+    "frizer": "Petar",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 20013010,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 26,
+    "vreme": "10:00",
+    "datum": "Oct 10, 2025",
+    "frizer": "Eva",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 20013010,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 27,
+    "vreme": "13:00",
+    "datum": "Oct 10, 2025",
+    "frizer": "Eva",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 321434342,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 12,
+    "vreme": "16:00",
+    "datum": "Dec 11, 2023",
+    "frizer": "Dzoni",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 5
+  },
+  {
+    "salon": {
+      "pib": 321434342,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 13,
+    "vreme": "22:00",
+    "datum": "Nov 11, 2026",
+    "frizer": "Toni",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 321434342,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 25,
+    "vreme": "10:30",
+    "datum": "Oct 15, 2024",
+    "frizer": "Toni",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 321434342,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 28,
+    "vreme": "14:00",
+    "datum": "Dec 6, 2025",
+    "frizer": "Trajko",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 321434342,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 32,
+    "vreme": "9:00",
+    "datum": "Oct 10, 2024",
+    "frizer": "Petko",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  }
+]

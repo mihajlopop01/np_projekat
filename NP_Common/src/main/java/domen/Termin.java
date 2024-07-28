@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Date;
 
@@ -21,6 +23,7 @@ import java.util.Date;
  * @author Mihajlo Popovic
  * @version 1.0
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Termin extends OpstiDomenskiObjekat implements Serializable {
 
     /**
