@@ -255,13 +255,13 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
     @JsonIgnore
     @Override
     public String getAtrValue() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return korisnikid+"";
     }
 
     @JsonIgnore
     @Override
     public String getInsertData() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "korisnikid"; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @JsonIgnore

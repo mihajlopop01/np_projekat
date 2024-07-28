@@ -128,6 +128,28 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
         this.slobodan = slobodan;
         this.korisnik = korisnik;
     }
+        /**
+     * Konstruktor koji postavlja sve informacije o terminu.
+     *
+     * @param salon Salon u kome je termin.
+     * @param terminid Identifikacioni broj termina.
+     * @param vreme Vreme termina.
+     * @param datum Datum termina.
+     * @param frizer Ime frizera koji obavlja termin.
+     * @param slobodan Status da li je termin slobodan ili rezervisan.
+     * @param korisnik Korisnik koji je rezervisao termin.
+     * @param usluga Usluga termina.
+     */
+        public Termin(Salon salon, Long terminid, String vreme, Date datum, String frizer, boolean slobodan, Korisnik korisnik, Usluga usluga) {
+        this.salon = salon;
+        this.terminid = terminid;
+        this.vreme = vreme;
+        this.datum = datum;
+        this.frizer = frizer;
+        this.slobodan = slobodan;
+        this.korisnik = korisnik;
+        this.usluga = usluga;
+    }
 
     /**
      * Konstruktor koji postavlja osnovne informacije o slobodnom terminu.

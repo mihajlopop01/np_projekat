@@ -31,7 +31,7 @@ public class ZapamtiZakazivanjeSO extends AbstractSO {
     @Override
     protected void validate(Object argument) throws Exception {
         if (argument == null) {
-            throw new Exception("Korisnik nepostoji");
+            throw new Exception("Argument je null");
         }
     }
 

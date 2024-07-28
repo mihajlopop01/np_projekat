@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Mihajlo Popovic/.m2/repository/com/np_common/NP_Common/1.0-SNAPSHOT/NP_Common-1.0-SNAPSHOT.jar;C:/Users/Mihajlo Popovic/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.3/jackson-databind-2.13.3.jar;C:/Users/Mihajlo Popovic/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.3/jackson-annotations-2.13.3.jar;C:/Users/Mihajlo Popovic/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.3/jackson-core-2.13.3.jar;C:/Users/Mihajlo Popovic/.m2/repository/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar;C:/Users/Mihajlo Popovic/.m2/repository/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+20
+-sourcepath
+'C:/Users/Mihajlo Popovic/OneDrive/Desktop/NP/np_projekat/NP_Server/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Mihajlo Popovic/OneDrive/Desktop/NP/np_projekat/NP_Server/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'NP_Server 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'NP_Server 1.0-SNAPSHOT API'

@@ -32,7 +32,7 @@ public class AzurirajTerminSO1 extends AbstractSO {
     @Override
     protected void validate(Object argument) throws Exception {
         if (argument == null) {
-            throw new Exception("Korisnik ne postoji");
+            throw new Exception("Argument je null");
         }
     }
 

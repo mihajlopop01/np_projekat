@@ -22,7 +22,7 @@ public class DatabaseConnection {
 
     private DatabaseConnection() throws SQLException {
         connectionPool = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             try {
                 String url = "jdbc:mysql://localhost/np?serverTimezone=CET"; 
                 String user = "toni";

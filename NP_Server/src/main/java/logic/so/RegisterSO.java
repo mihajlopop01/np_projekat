@@ -32,7 +32,7 @@ public class RegisterSO extends AbstractSO {
     @Override
     protected void validate(Object user) throws Exception {
         if (user == null) {
-            throw new Exception("Korisnik nepostoji");
+            throw new Exception("Argument je null");
         }
     }
 

@@ -32,7 +32,7 @@ public class UcitajTerminSO extends AbstractSO {
     @Override
     protected void validate(Object argument) throws Exception {
         if (argument == null) {
-            throw new Exception("Termin ne postoji");
+            throw new Exception("Argument je null");
         }
     }
 
