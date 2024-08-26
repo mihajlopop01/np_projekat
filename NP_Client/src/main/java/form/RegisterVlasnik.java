@@ -152,9 +152,10 @@ public class RegisterVlasnik extends javax.swing.JDialog {
             vlasnik.setIme(txtIme.getText().trim());  //dodati validaciju i proveru da li su sifre iste
             vlasnik.setPrezime(txtPrezime.getText().trim());
             vlasnik.setEmail(txtEmail.getText().trim());
+            if(!txtSifra.getText().equals(txtSifraPonovo.getText())) { JOptionPane.showMessageDialog(this, "Sifre se ne poklapaju!"); txtSifra.setText(""); txtSifraPonovo.setText(""); return;}
             vlasnik.setSifra(new String(txtSifra.getPassword()));
             OpstiDomenskiObjekat v = UIController.getInstance().register(vlasnik);
-            JOptionPane.showMessageDialog(null, "Vlasnik " + vlasnik.getIme() + vlasnik.getVlasnikid()+ " je uspesno dodat!");
+            JOptionPane.showMessageDialog(null, "Vlasnik " + vlasnik.getIme() +" je uspesno dodat!");
             dispose();
             new DodavanjeSalona(null,true, (Vlasnik) v).setVisible(true);
         } catch (Exception e) {

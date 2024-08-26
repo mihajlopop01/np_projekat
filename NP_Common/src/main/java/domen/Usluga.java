@@ -42,6 +42,7 @@ public class Usluga extends OpstiDomenskiObjekat implements Serializable {
      * @param par Parametar koji se ne koristi u konstruktoru
      */
     public Usluga(int par) {
+        this.uslugaid = par;
     }
 
     /**

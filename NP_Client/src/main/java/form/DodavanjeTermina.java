@@ -11,6 +11,7 @@ import domen.OpstiDomenskiObjekat;
 import domen.Salon;
 import domen.Termin;
 import domen.Usluga;
+import domen.Zakazivanje;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,12 +33,14 @@ public class DodavanjeTermina extends javax.swing.JDialog {
      * Creates new form DodavanjeTermina
      */
     private Salon salon;
+    private Zakazivanje zakazivanje;
 
     public DodavanjeTermina(VlasnikMainForm aThis, boolean par, Salon salon) {
 
         super(aThis, par);
         this.salon = salon;
         initComponents();
+        zakazivanje = vratiZakazivanje();
         populateTable();
         populateComboBox();
 
@@ -56,7 +59,6 @@ public class DodavanjeTermina extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtVreme = new javax.swing.JTextField();
         txtDatum = new javax.swing.JTextField();
         btnDodajTermin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -66,6 +68,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         cbFrizer = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         cbUsluga = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -115,6 +118,8 @@ public class DodavanjeTermina extends javax.swing.JDialog {
 
         jLabel8.setText("Usluga");
 
+        cbUsluga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sisanje", "Feniranje", "Brijanje", "Farbanje" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,16 +139,19 @@ public class DodavanjeTermina extends javax.swing.JDialog {
                     .addComponent(jLabel8))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDodajTermin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDodajTermin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbFrizer, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbUsluga, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbFrizer, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtDatum))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
@@ -154,27 +162,27 @@ public class DodavanjeTermina extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel2))
-                .addGap(52, 52, 52)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel6))
-                .addGap(54, 54, 54)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cbUsluga, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbFrizer, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbFrizer, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(32, 32, 32)
                 .addComponent(btnDodajTermin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +196,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
             Termin termin = new Termin(this.salon);
-            termin.setVreme(txtVreme.getText().trim());
+            termin.setVreme((String) jComboBox1.getItemAt(0));
             String dateStr = txtDatum.getText();
             System.out.println(dateStr);
 
@@ -196,39 +204,41 @@ public class DodavanjeTermina extends javax.swing.JDialog {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = format.parse(dateStr);
                 System.out.println(termin.getDatum(date));
+                if (date.before(new Date())) {
+                    JOptionPane.showMessageDialog(this, "Unesite buduci datum");
+                    return;
+                }
                 termin.setDatum(date);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            
-            Usluga u = (Usluga)cbUsluga.getItemAt(0);
-            String s = (String)u.getNaziv();
-            
-            switch(s) {
-                case "sisanje":
+
+            String usluga = (String) cbUsluga.getItemAt(0);
+            switch (usluga) {
+                case "Sisanje":
                     termin.setUsluga(new Usluga(1));
+
                     break;
-                    
-                case "feniranje":
-                    termin.setUsluga(new Usluga(2));    
+                case "Feniranje":
+                    termin.setUsluga(new Usluga(2));
+
                     break;
-                    
-                case "brijanje":
+                case "Brijanje":
                     termin.setUsluga(new Usluga(3));
                     break;
-                    
-                case "farbanje":
-                    termin.setUsluga(new Usluga(3));
+                case "Farbanje":
+                    termin.setUsluga(new Usluga(4));
                     break;
-            
+                default:
+                    throw new AssertionError();
             }
-            
-            termin.setFrizer((String) cbFrizer.getSelectedItem());
+            termin.setUsluga(new Usluga(1));
+            termin.setFrizer((String) cbFrizer.getItemAt(0));
             termin.setSlobodan(true);
             termin.setKorisnik(new Korisnik(1, "", "", "", ""));
 
             System.out.println("Termin za dodavanje: " + termin);
-            if (proveriTermin(termin)) {
+            if (!proveriTermin(termin)) {
                 OpstiDomenskiObjekat v = UIController.getInstance().zapamtiTermin(termin);
                 JOptionPane.showMessageDialog(this, "Uspesno dodat termin!");
                 dispose();
@@ -247,6 +257,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
     private javax.swing.JButton btnDodajTermin;
     private javax.swing.JComboBox<String> cbFrizer;
     private javax.swing.JComboBox<Object> cbUsluga;
+    private javax.swing.JComboBox<Object> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -258,7 +269,6 @@ public class DodavanjeTermina extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtDatum;
-    private javax.swing.JTextField txtVreme;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
@@ -288,21 +298,22 @@ public class DodavanjeTermina extends javax.swing.JDialog {
 
         try {
             List<OpstiDomenskiObjekat> termini = UIController.getInstance().allTermini(termin);
-            List<String> vremena = new ArrayList<>();
+            List<Termin> vremena = new ArrayList<Termin>();
             for (OpstiDomenskiObjekat odo : termini) {
                 Termin t = (Termin) odo;
-                String vreme = t.getVreme();
-                vremena.add(vreme);
+                
+                vremena.add(t);
 
             }
-            if (vremena.contains(termin.getVreme())) {
-                return false;
-            }
-            return true;
+            for (Termin v: vremena) {
+                if(termin.getVreme().equals(v.getVreme()) && termin.getDatum().equals(v.getDatum())) {
+                    return true;
+                }
+            } return false;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     private void populateComboBox() {
@@ -318,24 +329,103 @@ public class DodavanjeTermina extends javax.swing.JDialog {
             } else {
                 cbFrizer.removeAllItems();
                 cbFrizer.setModel(new DefaultComboBoxModel());
-                for (OpstiDomenskiObjekat odo: listaFrizera) {
-                    Frizer f = (Frizer)odo;
+                for (OpstiDomenskiObjekat odo : listaFrizera) {
+                    Frizer f = (Frizer) odo;
                     cbFrizer.addItem(f.getIme());
-                
+
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        List<Usluga> usluge = new ArrayList<>();
-        usluge.add(new Usluga(1, "sisanje", "Sisanje klijenata"));
-        usluge.add(new Usluga(2, "feniranje", "Feniranje kose"));
-        usluge.add(new Usluga(3, "brijanje","brijanje brade"));
-        usluge.add(new Usluga(4,"fabranje","farbanje kose"));
-        
-        
-        cbUsluga.setModel(new DefaultComboBoxModel(usluge.toArray()));
 
+        jComboBox1.removeAllItems();
+        List<String> termini30 = new ArrayList<String>();
+        termini30.add("9:00");
+        termini30.add("9:30");
+        termini30.add("10:00");
+        termini30.add("10:30");
+        termini30.add("11:00");
+        termini30.add("11:30");
+        termini30.add("12:00");
+        termini30.add("12:30");
+        termini30.add("13:00");
+        termini30.add("13:30");
+        termini30.add("14:00");
+        termini30.add("14:30");
+        termini30.add("15:00");
+        termini30.add("15:30");
+        termini30.add("16:00");
+        termini30.add("16:30");
+        termini30.add("17:00");
+        termini30.add("17:30");
+        termini30.add("18:00");
+        termini30.add("18:30");
+        termini30.add("19:00");
+        termini30.add("19:30");
+        termini30.add("20:00");
+        termini30.add("20:30");
+        List<String> termini45 = new ArrayList<String>();
+        termini45.add("9:00");
+        termini45.add("9:45");
+        termini45.add("10:30");
+        termini45.add("11:15");
+        termini45.add("12:00");
+        termini45.add("12:45");
+        termini45.add("13:15");
+        termini45.add("14:00");
+        termini45.add("14:45");
+        termini45.add("15:15");
+        termini45.add("16:00");
+        termini45.add("16:45");
+        termini45.add("17:15");
+        termini45.add("18:00");
+        termini45.add("18:45");
+        termini45.add("19:00");
+        termini45.add("19:45");
+        termini45.add("20:15");
+        List<String> termini60 = new ArrayList<String>();
+        termini60.add("9:00");
+        termini60.add("9:00");
+        termini60.add("10:00");
+        termini60.add("11:00");
+        termini60.add("12:00");
+        termini60.add("13:00");
+        termini60.add("14:00");
+        termini60.add("15:00");
+        termini60.add("16:00");
+        termini60.add("17:00");
+        termini60.add("18:00");
+        termini60.add("19:00");
+        termini60.add("20:00");
+
+        switch (zakazivanje.getTrajanje()) {
+            case 30:
+                jComboBox1.setModel(new DefaultComboBoxModel<>(termini30.toArray()));
+                break;
+            case 45:
+                jComboBox1.setModel(new DefaultComboBoxModel<>(termini45.toArray()));
+                break;
+            case 60:
+                jComboBox1.setModel(new DefaultComboBoxModel<>(termini60.toArray()));
+                break;
+
+            default:
+                throw new AssertionError();
+        }
+
+    }
+
+    private Zakazivanje vratiZakazivanje() {
+        Zakazivanje z = new Zakazivanje();
+        Zakazivanje zak = null;
+        z.setSalon(this.salon);
+        try {
+            zak = (Zakazivanje) UIController.getInstance().vratiZakazivanje(z);
+            System.out.println("Podaci o zakazivanju salona" + zak);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return zak;
     }
 }

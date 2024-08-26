@@ -7,7 +7,7 @@
     },
     "terminid": 2,
     "vreme": "11:15",
-    "datum": "Oct 10, 2024",
+    "datum": "Nov 10, 3924",
     "frizer": "Petko",
     "slobodan": true,
     "whereType": 0,
@@ -26,6 +26,48 @@
     "slobodan": true,
     "whereType": 0,
     "ocena": 5
+  },
+  {
+    "salon": {
+      "pib": 2,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 62,
+    "vreme": "9:00",
+    "datum": "Oct 10, 2040",
+    "frizer": "Mihajlo",
+    "slobodan": false,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 2,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 63,
+    "vreme": "9:00",
+    "datum": "Oct 11, 2040",
+    "frizer": "Mihajlo",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
+  },
+  {
+    "salon": {
+      "pib": 2,
+      "brojFrizera": 0,
+      "whereType": 0
+    },
+    "terminid": 64,
+    "vreme": "9:00",
+    "datum": "Oct 10, 2024",
+    "frizer": "Mihajlo",
+    "slobodan": true,
+    "whereType": 0,
+    "ocena": 0
   },
   {
     "salon": {

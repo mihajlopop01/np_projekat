@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"domen","l":"Frizer"},{"p":"domen","l":"Korisnik"},{"p":"domen","l":"OpstiDomenskiObjekat"},{"p":"domen","l":"Placanje"},{"p":"domen","l":"Salon"},{"p":"domen","l":"Termin"},{"p":"domen","l":"Usluga"},{"p":"domen","l":"Vlasnik"},{"p":"domen","l":"Zakazivanje"}];updateSearchResults();

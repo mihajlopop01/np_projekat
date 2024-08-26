@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: domen.TerminTest
 -------------------------------------------------------------------------------
-Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s -- in domen.TerminTest
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s -- in domen.TerminTest

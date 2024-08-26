@@ -56,7 +56,7 @@ public class DodavanjeSalona extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtCena = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtTrajanje = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         btnZapamti = new javax.swing.JToggleButton();
         btnSacuvaj = new javax.swing.JButton();
 
@@ -77,11 +77,7 @@ public class DodavanjeSalona extends javax.swing.JDialog {
 
         jLabel7.setText("Trajanje");
 
-        txtTrajanje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTrajanjeActionPerformed(evt);
-            }
-        });
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30", "45", "60" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,7 +91,7 @@ public class DodavanjeSalona extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCena, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                    .addComponent(txtTrajanje))
+                    .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,11 +101,11 @@ public class DodavanjeSalona extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtCena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtTrajanje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         btnZapamti.setText("Zapamti Salon");
@@ -187,10 +183,6 @@ public class DodavanjeSalona extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTrajanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrajanjeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTrajanjeActionPerformed
-
     private void btnZapamtiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZapamtiActionPerformed
         // TODO add your handling code here:
         try {
@@ -219,7 +211,7 @@ public class DodavanjeSalona extends javax.swing.JDialog {
             Zakazivanje zakazivanje = new Zakazivanje();
             zakazivanje.setSalon(this.salon);
             zakazivanje.setCena(Integer.parseInt(txtCena.getText().trim()));
-            zakazivanje.setTrajanje(Integer.parseInt(txtTrajanje.getText()));
+            zakazivanje.setTrajanje(Integer.parseInt((String) jComboBox1.getSelectedItem()));
             zakazivanje.setKorisnik(new Korisnik(1,"","","",""));  //Korisnik ce se kasnije dodeliti zakazivanju
             OpstiDomenskiObjekat odo = UIController.getInstance().register(zakazivanje);
             JOptionPane.showMessageDialog(null, "Uspesno sacuvani podaci o zakazivanju");
@@ -233,6 +225,7 @@ public class DodavanjeSalona extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSacuvaj;
     private javax.swing.JToggleButton btnZapamti;
+    private javax.swing.JComboBox<Object> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -244,6 +237,5 @@ public class DodavanjeSalona extends javax.swing.JDialog {
     private javax.swing.JTextField txtMesto;
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtPIB;
-    private javax.swing.JTextField txtTrajanje;
     // End of variables declaration//GEN-END:variables
 }
