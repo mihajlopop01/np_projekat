@@ -196,7 +196,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
             Termin termin = new Termin(this.salon);
-            termin.setVreme((String) jComboBox1.getItemAt(0));
+            termin.setVreme((String) jComboBox1.getSelectedItem());
             String dateStr = txtDatum.getText();
             System.out.println(dateStr);
 
@@ -213,7 +213,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
                 e.printStackTrace();
             }
 
-            String usluga = (String) cbUsluga.getItemAt(0);
+            String usluga = (String) cbUsluga.getSelectedItem();
             switch (usluga) {
                 case "Sisanje":
                     termin.setUsluga(new Usluga(1));
@@ -233,7 +233,7 @@ public class DodavanjeTermina extends javax.swing.JDialog {
                     throw new AssertionError();
             }
             termin.setUsluga(new Usluga(1));
-            termin.setFrizer((String) cbFrizer.getItemAt(0));
+            termin.setFrizer((String) cbFrizer.getSelectedItem());
             termin.setSlobodan(true);
             termin.setKorisnik(new Korisnik(1, "", "", "", ""));
 

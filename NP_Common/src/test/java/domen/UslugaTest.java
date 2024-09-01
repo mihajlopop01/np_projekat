@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class UslugaTest {
 
@@ -71,5 +73,41 @@ public class UslugaTest {
         assertEquals(1L, newUsluga.getUslugaid());
         assertEquals("Šišanje", newUsluga.getNaziv());
         assertEquals("Kratka frizura", newUsluga.getOpis());
+    }
+
+    @Test
+    public void testSetUslugaidInvalid() {
+        Usluga usluga = new Usluga(1);
+        assertThrows(IllegalArgumentException.class, () -> usluga.setUslugaid(-1));
+        assertDoesNotThrow(() -> usluga.setUslugaid(1));
+    }
+
+    @Test
+    public void testSetNazivInvalid() {
+        Usluga usluga = new Usluga(1);
+        assertThrows(IllegalArgumentException.class, () -> usluga.setNaziv(null));
+        assertThrows(IllegalArgumentException.class, () -> usluga.setNaziv(""));
+    }
+
+    @Test
+    public void testSetOpisInvalid() {
+        Usluga usluga = new Usluga(1);
+        assertThrows(IllegalArgumentException.class, () -> usluga.setOpis(null));
+        assertDoesNotThrow(() -> usluga.setOpis("Valid opis"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1, 1, true",
+        "1, 2, false"
+    })
+    public void testEquals(long id1, long id2, boolean expected) {
+        Usluga u1 = new Usluga(1);
+        u1.setUslugaid(id1);
+
+        Usluga u2 = new Usluga(1);
+        u2.setUslugaid(id2);
+
+        assertEquals(expected, u1.equals(u2));
     }
 }

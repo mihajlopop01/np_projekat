@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.Objects;
 
 /**
  * Predstavlja zakazivanje u salonu. Klasa Zakazivanje nasleđuje klasu
@@ -108,8 +109,12 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ID zakazivanja na zadatu vrednost.
      *
      * @param zakazivanjeid ID zakazivanja kao int
+     * @throws IllegalArgumentException ako je ID negativan
      */
     public void setZakazivanjeid(int zakazivanjeid) {
+        if (zakazivanjeid < 0) {
+            throw new IllegalArgumentException("ID zakazivanja ne može biti negativan.");
+        }
         this.zakazivanjeid = zakazivanjeid;
     }
 
@@ -127,8 +132,12 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
      *
      * @param salon Salon u kojem je zakazivanje obavljeno kao objekat klase
      * Salon
+     * @throws IllegalArgumentException ako je salon null
      */
     public void setSalon(Salon salon) {
+        if (salon == null) {
+            throw new IllegalArgumentException("Salon ne sme biti null.");
+        }
         this.salon = salon;
     }
 
@@ -146,8 +155,12 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
      *
      * @param korisnik Korisnik koji je napravio zakazivanje kao objekat klase
      * Korisnik
+     * @throws IllegalArgumentException ako je korisnik null
      */
     public void setKorisnik(Korisnik korisnik) {
+        if (korisnik == null) {
+            throw new IllegalArgumentException("Korisnik ne sme biti null.");
+        }
         this.korisnik = korisnik;
     }
 
@@ -164,8 +177,12 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja cenu zakazivanja na zadatu vrednost.
      *
      * @param cena Cena zakazivanja kao int
+     * @throws IllegalArgumentException ako je cena negativna
      */
     public void setCena(int cena) {
+        if (cena < 0) {
+            throw new IllegalArgumentException("Cena ne može biti negativna.");
+        }
         this.cena = cena;
     }
 
@@ -182,12 +199,16 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja trajanje zakazivanja na zadatu vrednost.
      *
      * @param trajanje Trajanje zakazivanja u minutima kao int
+     * @throws IllegalArgumentException ako je trajanje negativno
      */
     public void setTrajanje(int trajanje) {
+        if (trajanje < 0) {
+            throw new IllegalArgumentException("Trajanje ne može biti negativno.");
+        }
         this.trajanje = trajanje;
     }
 
-/**
+    /**
      * Vraća naziv klase.
      *
      * @return naziv klase kao String
@@ -325,25 +346,53 @@ public class Zakazivanje extends OpstiDomenskiObjekat implements Serializable {
     public Placanje getPlacanje() {
         return placanje;
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     @JsonIgnore
-        @Override
+    @Override
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String setAtrValue1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * Poredi dva objekta Zakazivanje po ID-ju i salonu.
+     *
+     * @param obj objekat za poređenje
+     * @return true ako su objekti jednaki, false inače
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Zakazivanje other = (Zakazivanje) obj;
+        if (this.zakazivanjeid != other.zakazivanjeid) {
+            return false;
+        }
+        return Objects.equals(this.salon, other.salon);
     }
 
 }

@@ -32,11 +32,9 @@ public class Placanje extends OpstiDomenskiObjekat implements Serializable {
     private String nacin;
 
     /**
-     * Kreira novi objekat klase Placanje sa neinicijalizovanim atributima.
-     *
-     * @param par Parametar koji se ne koristi u konstruktoru
+     * Kreira novi objekat klase Korisnik sa neinicijalizovanim atributima.
      */
-    public Placanje(int par) {
+    public Placanje() {
     }
 
     /**
@@ -61,11 +59,15 @@ public class Placanje extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja ID plačanja na zadatu vrednost.
+     * Postavlja ID plaćanja na zadatu vrednost. ID mora biti pozitivan broj.
      *
-     * @param placanjeid ID plačanja kao long
+     * @param placanjeid ID plaćanja kao long
+     * @throws IllegalArgumentException ako je ID plaćanja manji ili jednak nuli
      */
     public void setPlacanjeid(long placanjeid) {
+        if (placanjeid <= 0) {
+            throw new IllegalArgumentException("ID plaćanja mora biti veći od nule.");
+        }
         this.placanjeid = placanjeid;
     }
 
@@ -79,13 +81,44 @@ public class Placanje extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja način plačanja na zadatu vrednost.
+     * Postavlja način plaćanja na zadatu vrednost. Način plaćanja ne sme biti
+     * null ili prazan string.
      *
-     * @param iznos Način plačanja kao String
+     * @param nacin Način plaćanja kao String
+     * @throws IllegalArgumentException ako je način plaćanja null ili prazan
+     * string
      */
-    public void setNacin(String iznos) {
-        this.nacin = iznos;
+    public void setNacin(String nacin) {
+        if (nacin == null || nacin.trim().isEmpty()) {
+            throw new IllegalArgumentException("Način plaćanja ne sme biti null ili prazan.");
+        }
+        this.nacin = nacin;
     }
+
+/**
+ * Proverava da li su dva objekta klase Placanje jednaka.
+ * Objekti se smatraju jednakima ako imaju isti ID plaćanja.
+ *
+ * @param obj Objekat koji se poredi sa trenutnim objektom
+ * @return true ako je prosleđeni objekat instance klase Placanje i ima isti ID plaćanja, u suprotnom false
+ */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Placanje other = (Placanje) obj;
+        return this.placanjeid == other.placanjeid;
+    }
+    
+    
+    
 
     @JsonIgnore
 

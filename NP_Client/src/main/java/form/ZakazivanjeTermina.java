@@ -200,10 +200,10 @@ public class ZakazivanjeTermina extends javax.swing.JDialog {
             
             String s = (String)cbPlacanja.getSelectedItem();
             if(s.equals("KARTICA")) {
-                z.setPlacanje(new Placanje(1));
+                z.setPlacanje(new Placanje(1,"kartica"));
                   
             } else {
-                z.setPlacanje(new Placanje(2));
+                z.setPlacanje(new Placanje(2,"kes"));
             }
             JOptionPane.showMessageDialog(null, "Uspesno sacuvan termin!");
             dispose();
@@ -244,7 +244,7 @@ public class ZakazivanjeTermina extends javax.swing.JDialog {
             txtCena.setEditable(false);
             txtTrajanje.setEditable(false);
             z.setSalon(salon);
-            z.setPlacanje(new Placanje(0));
+            z.setPlacanje(new Placanje(0,"kartica"));
             
             return z;
             

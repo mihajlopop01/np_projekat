@@ -125,11 +125,15 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja PIB salona na unetu vrednost.
+     * Postavlja PIB salona na unetu vrednost. PIB mora biti pozitivan broj.
      *
-     * @param pib PIB salona kao long.
+     * @param pib PIB salona kao long
+     * @throws IllegalArgumentException ako je PIB manji ili jednak nuli
      */
     public void setPib(long pib) {
+        if (pib <= 0) {
+            throw new IllegalArgumentException("PIB salona mora biti veći od nule.");
+        }
         this.pib = pib;
     }
 
@@ -143,11 +147,16 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja ime salona na unetu vrednost.
+     * Postavlja ime salona na unetu vrednost. Ime ne sme biti null ili prazan
+     * string.
      *
-     * @param ime Ime salona kao String.
+     * @param ime Ime salona kao String
+     * @throws IllegalArgumentException ako je ime null ili prazan string
      */
     public void setIme(String ime) {
+        if (ime == null || ime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ime salona ne sme biti null ili prazan.");
+        }
         this.ime = ime;
     }
 
@@ -161,11 +170,16 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja mesto salona na unetu vrednost.
+     * Postavlja mesto salona na unetu vrednost. Mesto ne sme biti null ili
+     * prazan string.
      *
-     * @param mesto Mesto salona kao String.
+     * @param mesto Mesto salona kao String
+     * @throws IllegalArgumentException ako je mesto null ili prazan string
      */
     public void setMesto(String mesto) {
+        if (mesto == null || mesto.trim().isEmpty()) {
+            throw new IllegalArgumentException("Mesto salona ne sme biti null ili prazan.");
+        }
         this.mesto = mesto;
     }
 
@@ -179,11 +193,16 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja broj frizera u salonu na unetu vrednost.
+     * Postavlja broj frizera u salonu na unetu vrednost. Broj frizera mora biti
+     * nenegativan broj.
      *
-     * @param brojFrizera Broj frizera kao int.
+     * @param brojFrizera Broj frizera kao int
+     * @throws IllegalArgumentException ako je broj frizera negativan
      */
     public void setBrojFrizera(int brojFrizera) {
+        if (brojFrizera < 0) {
+            throw new IllegalArgumentException("Broj frizera ne sme biti negativan.");
+        }
         this.brojFrizera = brojFrizera;
     }
 
@@ -197,20 +216,29 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja vlasnika salona na unetu vrednost.
+     * Postavlja vlasnika salona na unetu vrednost. Vlasnik ne sme biti null.
      *
-     * @param vlasnik Vlasnik salona kao objekat klase Vlasnik.
+     * @param vlasnik Vlasnik salona kao objekat klase Vlasnik
+     * @throws IllegalArgumentException ako je vlasnik null
      */
     public void setVlasnik(Vlasnik vlasnik) {
+        if (vlasnik == null) {
+            throw new IllegalArgumentException("Vlasnik salona ne sme biti null.");
+        }
         this.vlasnik = vlasnik;
     }
 
     /**
-     * Postavlja listu termina salona na unetu vrednost.
+     * Postavlja listu termina salona na unetu vrednost. Lista termina može biti
+     * null, ali ne sme sadržati null vrednosti.
      *
-     * @param termini Lista termina kao List<Termin>.
+     * @param termini Lista termina kao List<Termin>
+     * @throws IllegalArgumentException ako lista sadrži null vrednosti
      */
     public void setTermini(List<Termin> termini) {
+        if (termini != null && termini.contains(null)) {
+            throw new IllegalArgumentException("Lista termina ne sme sadržati null vrednosti.");
+        }
         this.termini = termini;
     }
 
@@ -218,6 +246,7 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
      * Vraća PIB salona kao string.
      *
      * @return PIB salona kao String.
+     *
      */
     @Override
     public String toString() {
@@ -394,5 +423,30 @@ public class Salon extends OpstiDomenskiObjekat implements Serializable {
     public List<Termin> getTermini() {
         return termini;
     }
+
+/**
+ * Proverava da li su dva objekta klase Salon jednaka.
+ * Objekti se smatraju jednakima ako imaju isti PIB.
+ *
+ * @param obj Objekat koji se poredi sa trenutnim objektom
+ * @return true ako je prosleđeni objekat instance klase Salon i ima isti PIB, u suprotnom false
+ */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Salon other = (Salon) obj;
+        return this.pib == other.pib;
+    }
+    
+    
+    
 
 }

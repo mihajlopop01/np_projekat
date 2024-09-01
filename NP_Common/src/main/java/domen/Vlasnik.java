@@ -145,8 +145,12 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ime vlasnika na unetu vrednost.
      *
      * @param ime ime vlasnika kao String
+     * @throws IllegalArgumentException ako je ime null ili prazno
      */
     public void setIme(String ime) {
+        if (ime == null || ime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ime ne sme biti null ili prazno.");
+        }
         this.ime = ime;
     }
 
@@ -163,8 +167,12 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja prezime vlasnika na unetu vrednost.
      *
      * @param prezime prezime vlasnika kao String
+     * @throws IllegalArgumentException ako je prezime null ili prazno
      */
     public void setPrezime(String prezime) {
+        if (prezime == null || prezime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Prezime ne sme biti null ili prazno.");
+        }
         this.prezime = prezime;
     }
 
@@ -181,8 +189,14 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja email vlasnika na unetu vrednost.
      *
      * @param email email vlasnika kao String
+     * @throws IllegalArgumentException ako je email null, prazan, ili nije
+     * validan
      */
     public void setEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Email ne sme biti null ili prazan.");
+        }
+
         this.email = email;
     }
 
@@ -199,8 +213,12 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja šifru vlasnika na unetu vrednost.
      *
      * @param sifra šifra vlasnika kao String
+     * @throws IllegalArgumentException ako je šifra null ili prazna
      */
     public void setSifra(String sifra) {
+        if (sifra == null || sifra.trim().isEmpty()) {
+            throw new IllegalArgumentException("Šifra ne sme biti null ili prazna.");
+        }
         this.sifra = sifra;
     }
 
@@ -331,35 +349,40 @@ public class Vlasnik extends OpstiDomenskiObjekat implements Serializable {
         this.whereType = whereType;
     }
 
-  @JsonIgnore  @Override
+    @JsonIgnore
+    @Override
     public String getWhereCondition2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String setAtrValue() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-  @JsonIgnore  @Override
+    @JsonIgnore
+    @Override
     public String setAtrValue1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String setAtrValue2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
-

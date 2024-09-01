@@ -81,8 +81,12 @@ public class Usluga extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ID usluge na zadatu vrednost.
      *
      * @param uslugaid ID usluge kao long
+     * @throws IllegalArgumentException ako ID usluge nije pozitivan
      */
     public void setUslugaid(long uslugaid) {
+        if (uslugaid <= 0) {
+            throw new IllegalArgumentException("ID usluge mora biti pozitivan.");
+        }
         this.uslugaid = uslugaid;
     }
 
@@ -99,8 +103,12 @@ public class Usluga extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja naziv usluge na zadatu vrednost.
      *
      * @param naziv Naziv usluge kao String
+     * @throws IllegalArgumentException ako naziv nije validan (null ili prazan)
      */
     public void setNaziv(String naziv) {
+        if (naziv == null || naziv.isBlank()) {
+            throw new IllegalArgumentException("Naziv ne sme biti null ili prazan.");
+        }
         this.naziv = naziv;
     }
 
@@ -117,8 +125,12 @@ public class Usluga extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja opis usluge na zadatu vrednost.
      *
      * @param opis Opis usluge kao String
+     * @throws IllegalArgumentException ako opis nije validan (null)
      */
     public void setOpis(String opis) {
+        if (opis == null) {
+            throw new IllegalArgumentException("Opis ne sme biti null.");
+        }
         this.opis = opis;
     }
 
@@ -135,6 +147,30 @@ public class Usluga extends OpstiDomenskiObjekat implements Serializable {
     public String toString() {
         return naziv;
     }
+
+/**
+ * Upoređuje ovaj objekat sa datim objektom za jednakost.
+ *
+ * @param obj Objekat sa kojim se upoređuje ovaj objekat.
+ * @return true ako su objekti isti (imaju isti ID usluge) ili ako su isti objekat, inače false
+ */
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usluga other = (Usluga) obj;
+        return this.uslugaid == other.uslugaid;
+    }
+    
+    
 
     @JsonIgnore
     @Override

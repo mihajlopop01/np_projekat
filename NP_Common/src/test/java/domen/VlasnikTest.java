@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class VlasnikTest {
 
@@ -24,19 +26,65 @@ public class VlasnikTest {
     }
 
     @Test
-    public void testSeteriGeteri() {
+    public void testSetImeValid() {
         Vlasnik vlasnik = new Vlasnik();
-        vlasnik.setVlasnikid(2L);
-        vlasnik.setIme("Ana");
-        vlasnik.setPrezime("Ana");
-        vlasnik.setEmail("ana@example.com");
-        vlasnik.setSifra("novaSifra");
+        vlasnik.setIme("Marko");
+        assertEquals("Marko", vlasnik.getIme());
+    }
+
+    @Test
+    public void testSetImeInvalid() {
+        Vlasnik vlasnik = new Vlasnik();
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setIme(null));
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setIme(""));
+    }
+
+    @Test
+    public void testSetPrezimeValid() {
+        Vlasnik vlasnik = new Vlasnik();
+        vlasnik.setPrezime("Markovic");
+        assertEquals("Markovic", vlasnik.getPrezime());
+    }
+
+    @Test
+    public void testSetPrezimeInvalid() {
+        Vlasnik vlasnik = new Vlasnik();
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setPrezime(null));
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setPrezime(""));
+    }
+
+    @Test
+    public void testSetEmailValid() {
+        Vlasnik vlasnik = new Vlasnik();
+        vlasnik.setEmail("marko.markovic@example.com");
+        assertEquals("marko.markovic@example.com", vlasnik.getEmail());
+    }
+
+    @Test
+    public void testSetEmail() {
+        Vlasnik vlasnik = new Vlasnik();
+
         
-        assertEquals(2L, vlasnik.getVlasnikid());
-        assertEquals("Ana", vlasnik.getIme());
-        assertEquals("Ana", vlasnik.getPrezime());
-        assertEquals("ana@example.com", vlasnik.getEmail());
-        assertEquals("novaSifra", vlasnik.getSifra());
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setEmail(null));
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setEmail(""));
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setEmail("   "));
+
+        
+        assertDoesNotThrow(() -> vlasnik.setEmail("dobar@gmail.com"));
+    }
+
+    @Test
+    public void testSetSifraValid() {
+        Vlasnik vlasnik = new Vlasnik();
+        vlasnik.setSifra("123456");
+        assertEquals("123456", vlasnik.getSifra());
+    }
+
+    @Test
+    public void testSetSifraInvalid() {
+        Vlasnik vlasnik = new Vlasnik();
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setSifra(null));
+        assertThrows(IllegalArgumentException.class, () -> vlasnik.setSifra(""));
     }
 
     @Test
@@ -114,5 +162,23 @@ public class VlasnikTest {
         vlasnik.setWhereType(3);
         assertEquals(3, vlasnik.getWhereType());
     }
+    
+        @ParameterizedTest
+    @CsvSource({
+        "test@example.com, password123, test@example.com, password123, true",
+        "test@example.com, password123, test@example.com, password456, false",
+        "test@example.com, password123, different@example.com, password123, false",
+      
+    })
+    public void testEquals(String email1, String sifra1, String email2, String sifra2, boolean expectedResult) {
+        Vlasnik vlasnik1 = new Vlasnik();
+        vlasnik1.setEmail(email1);
+        vlasnik1.setSifra(sifra1);
+        
+        Vlasnik vlasnik2 = new Vlasnik();
+        vlasnik2.setEmail(email2);
+        vlasnik2.setSifra(sifra2);
+        
+        assertEquals(expectedResult, vlasnik1.equals(vlasnik2));
+    }
 }
-

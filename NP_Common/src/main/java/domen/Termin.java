@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Predstavlja termin u salonu za friziranje.
@@ -128,7 +129,8 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
         this.slobodan = slobodan;
         this.korisnik = korisnik;
     }
-        /**
+
+    /**
      * Konstruktor koji postavlja sve informacije o terminu.
      *
      * @param salon Salon u kome je termin.
@@ -140,7 +142,7 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * @param korisnik Korisnik koji je rezervisao termin.
      * @param usluga Usluga termina.
      */
-        public Termin(Salon salon, Long terminid, String vreme, Date datum, String frizer, boolean slobodan, Korisnik korisnik, Usluga usluga) {
+    public Termin(Salon salon, Long terminid, String vreme, Date datum, String frizer, boolean slobodan, Korisnik korisnik, Usluga usluga) {
         this.salon = salon;
         this.terminid = terminid;
         this.vreme = vreme;
@@ -200,8 +202,12 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja uslugu koja je vezana za ovaj termin.
      *
      * @param usluga Usluga koja se postavlja za ovaj termin.
+     * @throws IllegalArgumentException ako je usluga null
      */
     public void setUsluga(Usluga usluga) {
+        if (usluga == null) {
+            throw new IllegalArgumentException("Usluga ne sme biti null.");
+        }
         this.usluga = usluga;
     }
 
@@ -218,8 +224,12 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ocenu za ovaj termin.
      *
      * @param ocena Ocena koja se postavlja za ovaj termin.
+     * @throws IllegalArgumentException ako ocena nije u rasponu od 1 do 5
      */
     public void setOcena(int ocena) {
+        if (ocena < 1 || ocena > 5) {
+            throw new IllegalArgumentException("Ocena mora biti između 1 i 5.");
+        }
         this.ocena = ocena;
     }
 
@@ -236,8 +246,12 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja salon na unetu vrednost.
      *
      * @param salon salon kao objekat klase Salon
+     * @throws IllegalArgumentException ako je salon null
      */
     public void setSalon(Salon salon) {
+        if (salon == null) {
+            throw new IllegalArgumentException("Salon ne sme biti null.");
+        }
         this.salon = salon;
     }
 
@@ -254,8 +268,12 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ID termina na unetu vrednost.
      *
      * @param terminid ID termina kao Long
+     * @throws IllegalArgumentException ako ID termina nije pozitivan
      */
     public void setTerminid(Long terminid) {
+        if (terminid != null && terminid <= 0) {
+            throw new IllegalArgumentException("ID termina mora biti pozitivan.");
+        }
         this.terminid = terminid;
     }
 
@@ -272,8 +290,13 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja vreme termina na unetu vrednost.
      *
      * @param vreme vreme termina kao String
+     * @throws IllegalArgumentException ako vreme nije validan format
      */
     public void setVreme(String vreme) {
+        if (vreme == null || vreme.isBlank()) {
+            throw new IllegalArgumentException("Vreme ne sme biti null ili prazno.");
+        }
+        // Add further validation for time format if necessary
         this.vreme = vreme;
     }
 
@@ -302,8 +325,13 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja datum termina na unetu vrednost.
      *
      * @param datum datum termina kao Date
+     * @throws IllegalArgumentException ako datum nije validan ili je null
      */
     public void setDatum(Date datum) {
+        if (datum == null) {
+            throw new IllegalArgumentException("Datum ne sme biti null.");
+        }
+        // Optional: Add further validation for date
         this.datum = datum;
     }
 
@@ -320,8 +348,12 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja frizera za termin na unetu vrednost.
      *
      * @param frizer frizer za termin kao String
+     * @throws IllegalArgumentException ako frizer ime nije validno
      */
     public void setFrizer(String frizer) {
+        if (frizer == null || frizer.isBlank()) {
+            throw new IllegalArgumentException("Frizer ne sme biti null ili prazno.");
+        }
         this.frizer = frizer;
     }
 
@@ -515,5 +547,29 @@ public class Termin extends OpstiDomenskiObjekat implements Serializable {
     public String setAtrValue2() {
         return "ocena = " + ocena;
     }
+
+/**
+ * Upoređuje ovaj objekat sa datim objektom za jednakost.
+ *
+ * @param obj Objekat sa kojim se upoređuje ovaj objekat.
+ * @return true ako su objekti isti (imaju isti ID termina) ili ako su isti objekat, inače false
+ */
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Termin other = (Termin) obj;
+        return Objects.equals(this.terminid, other.terminid);
+    }
+    
+    
 
 }

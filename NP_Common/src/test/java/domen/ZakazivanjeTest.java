@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ZakazivanjeTest {
 
@@ -28,7 +30,7 @@ public class ZakazivanjeTest {
         korisnik = new Korisnik();
         korisnik.setKorisnikid(1);
 
-        placanje = new Placanje(1);
+        placanje = new Placanje(1, "kartica");
 
         zakazivanje = new Zakazivanje(salon, korisnik, 1000, 60, placanje);
         zakazivanje.setZakazivanjeid(1);
@@ -94,6 +96,36 @@ public class ZakazivanjeTest {
     }
 
     @Test
+    public void testSetZakazivanjeidInvalid() {
+        Zakazivanje zakazivanje = new Zakazivanje();
+        assertThrows(IllegalArgumentException.class, () -> zakazivanje.setZakazivanjeid(-1));
+    }
+
+    @Test
+    public void testSetSalonInvalid() {
+        Zakazivanje zakazivanje = new Zakazivanje();
+        assertThrows(IllegalArgumentException.class, () -> zakazivanje.setSalon(null));
+    }
+
+    @Test
+    public void testSetKorisnikInvalid() {
+        Zakazivanje zakazivanje = new Zakazivanje();
+        assertThrows(IllegalArgumentException.class, () -> zakazivanje.setKorisnik(null));
+    }
+
+    @Test
+    public void testSetCenaInvalid() {
+        Zakazivanje zakazivanje = new Zakazivanje();
+        assertThrows(IllegalArgumentException.class, () -> zakazivanje.setCena(-100));
+    }
+
+    @Test
+    public void testSetTrajanjeInvalid() {
+        Zakazivanje zakazivanje = new Zakazivanje();
+        assertThrows(IllegalArgumentException.class, () -> zakazivanje.setTrajanje(-30));
+    }
+
+    @Test
     public void testGetClassName() {
         assertEquals("zakazivanje", zakazivanje.getClassName(), "Naziv klase treba da bude 'zakazivanje'");
     }
@@ -113,7 +145,7 @@ public class ZakazivanjeTest {
 
         assertEquals(1000, newZak.getCena());
         assertEquals(60, newZak.getTrajanje());
-        
+
     }
 
     @Test
@@ -164,7 +196,7 @@ public class ZakazivanjeTest {
 
     @Test
     public void testSetPlacanje() {
-        Placanje novoPlacanje = new Placanje(1);
+        Placanje novoPlacanje = new Placanje(1, "kartica");
         zakazivanje.setPlacanje(novoPlacanje);
         assertEquals(novoPlacanje, zakazivanje.getPlacanje(), "Placanje treba da bude isto kao novoPlacanje");
     }
@@ -173,5 +205,23 @@ public class ZakazivanjeTest {
     public void testGetPlacanje() {
         assertEquals(placanje, zakazivanje.getPlacanje(), "Placanje treba da bude isto kao postavljeno");
     }
-}
 
+@ParameterizedTest
+@CsvSource({
+    "1, 1001, 1, 1001, true",
+    "1, 1001, 1, 1002, false",
+    "1, 1001, 2, 1001, false",
+    "1, 1001, 2, 1002, false"
+})
+public void testEquals(int id1, long salon1, int id2, long salon2, boolean expected) {
+    Zakazivanje zakazivanje1 = new Zakazivanje();
+    zakazivanje1.setZakazivanjeid(id1);
+    zakazivanje1.setSalon(new Salon(salon1));
+
+    Zakazivanje zakazivanje2 = new Zakazivanje();
+    zakazivanje2.setZakazivanjeid(id2);
+    zakazivanje2.setSalon(new Salon(salon2));
+
+    assertEquals(expected, zakazivanje1.equals(zakazivanje2));
+}
+}

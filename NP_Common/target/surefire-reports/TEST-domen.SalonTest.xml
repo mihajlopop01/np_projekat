@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="domen.SalonTest" time="0.084" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="domen.SalonTest" time="0.075" tests="28" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.3\junit-jupiter-params-5.9.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
-    <property name="sun.java.command" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire3633729969342980521\surefirebooter-20240826030030219_3.jar C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire3633729969342980521 2024-08-26T03-00-29_762-jvmRun1 surefire-20240826030030219_1tmp surefire_0-20240826030030219_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire7465216636671943141\surefirebooter-20240901215349468_3.jar C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire7465216636671943141 2024-09-01T21-53-49_216-jvmRun1 surefire-20240901215349468_1tmp surefire_0-20240901215349468_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\test-classes;C:\Users\Mihajlo Popovic\OneDrive\Desktop\NP\np_projekat\NP_Common\target\classes;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.3\jackson-databind-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.3\jackson-annotations-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.3\jackson-core-2.13.3.jar;C:\Users\Mihajlo Popovic\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.3\junit-jupiter-params-5.9.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Mihajlo Popovic"/>
     <property name="user.language" value="en"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire3633729969342980521\surefirebooter-20240826030030219_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Mihajlo Popovic\AppData\Local\Temp\surefire7465216636671943141\surefirebooter-20240901215349468_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="20.0.1+9-29"/>
@@ -59,22 +59,32 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="testGetMesto" classname="domen.SalonTest" time="0.006"/>
-  <testcase name="testSetVlasnik" classname="domen.SalonTest" time="0.004"/>
-  <testcase name="testGetTermini" classname="domen.SalonTest" time="0.004"/>
-  <testcase name="testToString" classname="domen.SalonTest" time="0.013"/>
+  <testcase name="testSetBrojFrizeraInvalid" classname="domen.SalonTest" time="0.004"/>
+  <testcase name="testGetMesto" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testSetVlasnik" classname="domen.SalonTest" time="0.001"/>
+  <testcase name="testSetImeInvalid" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testGetTermini" classname="domen.SalonTest" time="0.001"/>
+  <testcase name="testToString" classname="domen.SalonTest" time="0.005"/>
+  <testcase name="testSetVlasnikInvalid" classname="domen.SalonTest" time="0.002"/>
   <testcase name="testConstructorWithPibAndWhereType" classname="domen.SalonTest" time="0.001"/>
-  <testcase name="testGetBrojFrizera" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testSetTerminiInvalid" classname="domen.SalonTest" time="0.0"/>
+  <testcase name="testSetPibInvalid" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testGetBrojFrizera" classname="domen.SalonTest" time="0.001"/>
+  <testcase name="testGetNewRecord" classname="domen.SalonTest" time="0.003"/>
   <testcase name="testSetTermini" classname="domen.SalonTest" time="0.001"/>
-  <testcase name="testGetVlasnik" classname="domen.SalonTest" time="0.0"/>
+  <testcase name="testGetVlasnik" classname="domen.SalonTest" time="0.001"/>
   <testcase name="testGetClassName" classname="domen.SalonTest" time="0.001"/>
-  <testcase name="testGetWhereCondition" classname="domen.SalonTest" time="0.003"/>
+  <testcase name="testGetWhereCondition" classname="domen.SalonTest" time="0.001"/>
+  <testcase name="testEquals(long, long, boolean)[1]" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testEquals(long, long, boolean)[2]" classname="domen.SalonTest" time="0.001"/>
+  <testcase name="testEquals(long, long, boolean)[3]" classname="domen.SalonTest" time="0.002"/>
   <testcase name="testGetIme" classname="domen.SalonTest" time="0.001"/>
-  <testcase name="testGetPib" classname="domen.SalonTest" time="0.003"/>
-  <testcase name="testToString1" classname="domen.SalonTest" time="0.015"/>
-  <testcase name="testSetIme" classname="domen.SalonTest" time="0.003"/>
+  <testcase name="testGetPib" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testToString1" classname="domen.SalonTest" time="0.009"/>
+  <testcase name="testSetMestoInvalid" classname="domen.SalonTest" time="0.002"/>
+  <testcase name="testSetIme" classname="domen.SalonTest" time="0.002"/>
   <testcase name="testSetPib" classname="domen.SalonTest" time="0.001"/>
   <testcase name="testSetBrojFrizera" classname="domen.SalonTest" time="0.001"/>
-  <testcase name="testConstructorWithPib" classname="domen.SalonTest" time="0.001"/>
+  <testcase name="testConstructorWithPib" classname="domen.SalonTest" time="0.0"/>
   <testcase name="testSetMesto" classname="domen.SalonTest" time="0.001"/>
 </testsuite>

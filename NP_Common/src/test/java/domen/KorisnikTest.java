@@ -4,12 +4,18 @@
  */
 package domen;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class KorisnikTest {
-    
+
     private Korisnik korisnik;
 
     @BeforeEach
@@ -23,9 +29,16 @@ public class KorisnikTest {
     }
 
     @Test
-    public void testSetKorisnikid() {
+    public void testSetKorisnikidValid() {
         korisnik.setKorisnikid(2L);
         assertEquals(2L, korisnik.getKorisnikid());
+    }
+
+    @Test
+    public void testSetKorisnikidInvalid() {
+        Korisnik korisnik = new Korisnik();
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setKorisnikid(0L),
+                "Očekivana je IllegalArgumentException za korisnikid <= 0");
     }
 
     @Test
@@ -34,9 +47,18 @@ public class KorisnikTest {
     }
 
     @Test
-    public void testSetIme() {
+    public void testSetImeValid() {
         korisnik.setIme("Petar");
         assertEquals("Petar", korisnik.getIme());
+    }
+
+    @Test
+    public void testSetImeInvalid() {
+        Korisnik korisnik = new Korisnik();
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setIme(""),
+                "Očekivana je IllegalArgumentException za prazan string");
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setIme(null),
+                "Očekivana je IllegalArgumentException za null ime");
     }
 
     @Test
@@ -45,9 +67,18 @@ public class KorisnikTest {
     }
 
     @Test
-    public void testSetPrezime() {
+    public void testSetPrezimeValid() {
         korisnik.setPrezime("Petrovic");
         assertEquals("Petrovic", korisnik.getPrezime());
+    }
+
+    @Test
+    public void testSetPrezimeInvalid() {
+        Korisnik korisnik = new Korisnik();
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setPrezime(""),
+                "Očekivana je IllegalArgumentException za prazan string");
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setPrezime(null),
+                "Očekivana je IllegalArgumentException za null prezime");
     }
 
     @Test
@@ -56,9 +87,20 @@ public class KorisnikTest {
     }
 
     @Test
-    public void testSetEmail() {
+    public void testSetEmailValid() {
         korisnik.setEmail("petar@example.com");
         assertEquals("petar@example.com", korisnik.getEmail());
+    }
+
+    @Test
+    public void testSetEmailInvalid() {
+        Korisnik korisnik = new Korisnik();
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setEmail(""),
+                "Očekivana je IllegalArgumentException za prazan string");
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setEmail("invalidEmail"),
+                "Očekivana je IllegalArgumentException za nevalidan format emaila");
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setEmail(null),
+                "Očekivana je IllegalArgumentException za null email");
     }
 
     @Test
@@ -67,9 +109,41 @@ public class KorisnikTest {
     }
 
     @Test
-    public void testSetSifra() {
+    public void testSetSifraValid() {
         korisnik.setSifra("novaLozinka123");
         assertEquals("novaLozinka123", korisnik.getSifra());
+    }
+
+    @Test
+    public void testSetSifraInvalid() {
+        Korisnik korisnik = new Korisnik();
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setSifra("123"),
+                "Očekivana je IllegalArgumentException za šifru kraću od 6 karaktera");
+        assertThrows(IllegalArgumentException.class, () -> korisnik.setSifra(null),
+                "Očekivana je IllegalArgumentException za null šifru");
+    }
+    
+        @Test
+    public void testGetNewRecord() throws SQLException {
+       
+        ResultSet rs = mock(ResultSet.class);
+
+        
+        when(rs.getLong("korisnikid")).thenReturn(12345L);
+        when(rs.getString("ime")).thenReturn("John");
+        when(rs.getString("prezime")).thenReturn("Doe");
+        when(rs.getString("email")).thenReturn("john.doe@example.com");
+        when(rs.getString("sifra")).thenReturn("password123");
+
+       
+        Korisnik newKorisnik = (Korisnik) new Korisnik().getNewRecord(rs);
+
+        
+        assertEquals(12345L, newKorisnik.getKorisnikid());
+        assertEquals("John", newKorisnik.getIme());
+        assertEquals("Doe", newKorisnik.getPrezime());
+        assertEquals("john.doe@example.com", newKorisnik.getEmail());
+        assertEquals("password123", newKorisnik.getSifra());
     }
 
     @Test
@@ -77,16 +151,23 @@ public class KorisnikTest {
         assertEquals("Korisnik: Mihajlo", korisnik.toString());
     }
 
-    @Test
-    public void testEquals() {
-        Korisnik drugiKorisnik = new Korisnik(1L, "Mihajlo", "Popovic", "mihajlo@example.com", "lozinka123");
-        assertTrue(korisnik.equals(drugiKorisnik));
-    }
+    @ParameterizedTest
+    @CsvSource({
+        "marko@example.com, sifra123, marko@example.com, sifra123, true",
+        "marko@example.com, sifra123, marko@example.com, sifra456, false",
+        "marko@example.com, sifra123, janko@example.com, sifra123, false",
+        "marko@example.com, sifra123, janko@example.com, sifra456, false"
+    })
+    public void testEquals(String email1, String sifra1, String email2, String sifra2, boolean expected) {
+        Korisnik korisnik1 = new Korisnik();
+        korisnik1.setEmail(email1);
+        korisnik1.setSifra(sifra1);
 
-    @Test
-    public void testNotEquals() {
-        Korisnik drugiKorisnik = new Korisnik(2L, "Petar", "Petrovic", "petar@example.com", "drugaLozinka");
-        assertFalse(korisnik.equals(drugiKorisnik));
+        Korisnik korisnik2 = new Korisnik();
+        korisnik2.setEmail(email2);
+        korisnik2.setSifra(sifra2);
+
+        assertEquals(expected, korisnik1.equals(korisnik2));
     }
 
     @Test
@@ -99,4 +180,3 @@ public class KorisnikTest {
         assertEquals("email = 'mihajlo@example.com' AND sifra = 'lozinka123'", korisnik.getWhereCondition());
     }
 }
-

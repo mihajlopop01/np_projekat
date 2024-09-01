@@ -9,11 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 /**
- * Predstavlja frizera u sistemu.
- * Klasa Frizer nasleđuje klasu OpstiDomenskiObjekat i implementira interfejs Serializable.
- * Frizer ima svoj ID, ime, prezime i referencu na salon u kojem radi.
+ * Predstavlja frizera u sistemu. Klasa Frizer nasleđuje klasu
+ * OpstiDomenskiObjekat i implementira interfejs Serializable. Frizer ima svoj
+ * ID, ime, prezime i referencu na salon u kojem radi.
  *
  * @autor Mihajlo Popović
  * @verzija 1.0
@@ -25,17 +26,17 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
      * ID frizera kao long
      */
     private long frizerid;
-    
+
     /**
      * Ime frizera kao String
      */
     private String ime;
-    
+
     /**
      * Prezime frizera kao String
      */
     private String prezime;
-    
+
     /**
      * Referenca na Salon u kojem frizer radi kao objekat klase Salon
      */
@@ -48,7 +49,8 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Kreira novi objekat klase Frizer i postavlja ID, ime, prezime i salon na zadate vrednosti.
+     * Kreira novi objekat klase Frizer i postavlja ID, ime, prezime i salon na
+     * zadate vrednosti.
      *
      * @param frizerid ID frizera kao long
      * @param ime Ime frizera kao String
@@ -72,11 +74,15 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja ID frizera na zadatu vrednost.
+     * Postavlja ID frizera na zadatu vrednost, pod uslovom da je ID pozitivan.
      *
      * @param frizerid ID frizera kao long
+     * @throws IllegalArgumentException ako je frizerid manji ili jednak nuli
      */
     public void setFrizerid(long frizerid) {
+        if (frizerid <= 0) {
+            throw new IllegalArgumentException("ID frizera mora biti veći od nule.");
+        }
         this.frizerid = frizerid;
     }
 
@@ -90,11 +96,16 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja ime frizera na zadatu vrednost.
+     * Postavlja ime frizera na zadatu vrednost, pod uslovom da nije null ili
+     * prazan string.
      *
      * @param ime Ime frizera kao String
+     * @throws IllegalArgumentException ako je ime null ili prazan string
      */
     public void setIme(String ime) {
+        if (ime == null || ime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ime frizera ne sme biti prazno ili null.");
+        }
         this.ime = ime;
     }
 
@@ -108,11 +119,16 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja prezime frizera na zadatu vrednost.
+     * Postavlja prezime frizera na zadatu vrednost, pod uslovom da nije null
+     * ili prazan string.
      *
      * @param prezime Prezime frizera kao String
+     * @throws IllegalArgumentException ako je prezime null ili prazan string
      */
     public void setPrezime(String prezime) {
+        if (prezime == null || prezime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Prezime frizera ne sme biti prazno ili null.");
+        }
         this.prezime = prezime;
     }
 
@@ -126,11 +142,16 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
     }
 
     /**
-     * Postavlja referencu na salon u kojem frizer radi.
+     * Postavlja referencu na salon u kojem frizer radi, pod uslovom da nije
+     * null.
      *
      * @param salon Referenca na Salon kao objekat klase Salon
+     * @throws IllegalArgumentException ako je salon null
      */
     public void setSalon(Salon salon) {
+        if (salon == null) {
+            throw new IllegalArgumentException("Salon ne sme biti null.");
+        }
         this.salon = salon;
     }
 
@@ -141,7 +162,7 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
      */
     @Override
     public String toString() {
-        return "Frizer: "  + ime + " " + prezime;
+        return "Frizer: " + ime + " " + prezime;
     }
 
     /**
@@ -225,7 +246,7 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
      */
     @Override
     public String getWhereCondition1() {
-        return "PIB = "+'\''+salon.getPib()+'\'';
+        return "PIB = " + '\'' + salon.getPib() + '\'';
     }
 
     @Override
@@ -263,8 +284,34 @@ public class Frizer extends OpstiDomenskiObjekat implements Serializable {
     public String getWhereCondition4() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    /**
+ * Proverava da li je objekat jednak trenutnom objektu klase Frizer.
+ * Dva objekta su jednaka ako su oba instance klase Frizer i imaju isto ime i prezime.
+ *
+ * @param obj Objekat koji se poredi sa trenutnim objektom
+ * @return true ako su objekti jednaki; false u suprotnom
+ */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Frizer other = (Frizer) obj;
+        if (!Objects.equals(this.ime, other.ime)) {
+            return false;
+        }
+        return Objects.equals(this.prezime, other.prezime);
+    }
     
     
     
     
+
 }

@@ -98,8 +98,12 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ID korisnika na zadatu vrednost.
      *
      * @param korisnikid ID korisnika kao long
+     * @throws IllegalArgumentException ako je korisnikid manji ili jednak nuli
      */
     public void setKorisnikid(long korisnikid) {
+        if (korisnikid <= 0) {
+            throw new IllegalArgumentException("ID korisnika mora biti veći od nule.");
+        }
         this.korisnikid = korisnikid;
     }
 
@@ -116,8 +120,12 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja ime korisnika na zadatu vrednost.
      *
      * @param ime Ime korisnika kao String
+     * @throws IllegalArgumentException ako je ime null ili prazan string
      */
     public void setIme(String ime) {
+        if (ime == null || ime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ime korisnika ne sme biti prazno ili null.");
+        }
         this.ime = ime;
     }
 
@@ -134,8 +142,12 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja prezime korisnika na zadatu vrednost.
      *
      * @param prezime Prezime korisnika kao String
+     * @throws IllegalArgumentException ako je prezime null ili prazan string
      */
     public void setPrezime(String prezime) {
+        if (prezime == null || prezime.trim().isEmpty()) {
+            throw new IllegalArgumentException("Prezime korisnika ne sme biti prazno ili null.");
+        }
         this.prezime = prezime;
     }
 
@@ -152,8 +164,13 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja email korisnika na zadatu vrednost.
      *
      * @param email Email korisnika kao String
+     * @throws IllegalArgumentException ako je email null, prazan string ili
+     * nevalidnog formata
      */
     public void setEmail(String email) {
+        if (email == null || email.trim().isEmpty() || !email.contains("@")) {
+            throw new IllegalArgumentException("Email korisnika ne sme biti prazan, null ili nevalidnog formata.");
+        }
         this.email = email;
     }
 
@@ -170,8 +187,13 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
      * Postavlja šifru korisnika na zadatu vrednost.
      *
      * @param sifra Šifra korisnika kao String
+     * @throws IllegalArgumentException ako je šifra null ili kraća od 6
+     * karaktera
      */
     public void setSifra(String sifra) {
+        if (sifra == null || sifra.length() < 6) {
+            throw new IllegalArgumentException("Šifra korisnika mora imati najmanje 6 karaktera i ne sme biti null.");
+        }
         this.sifra = sifra;
     }
 
@@ -255,7 +277,7 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
     @JsonIgnore
     @Override
     public String getAtrValue() {
-        return korisnikid+"";
+        return korisnikid + "";
     }
 
     @JsonIgnore
@@ -269,7 +291,8 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
     public String getWhereCondition1() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-@JsonIgnore
+
+    @JsonIgnore
     @Override
     public String getWhereCondition2() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -281,13 +304,10 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
     @Override
     public String getWhereCondition3() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
- 
 
     @Override
     @JsonIgnore
@@ -295,7 +315,6 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-   
     @Override
     @JsonIgnore
     public String getWhereCondition4() {
@@ -314,7 +333,6 @@ public class Korisnik extends OpstiDomenskiObjekat implements Serializable {
         this.whereType = whereType;
     }
 
-    
     @Override
     @JsonIgnore
     public String setAtrValue2() {

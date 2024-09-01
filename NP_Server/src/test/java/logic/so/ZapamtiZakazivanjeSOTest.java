@@ -37,7 +37,7 @@ public class ZapamtiZakazivanjeSOTest {
 
     @Test
     public void testValidateValidArgument() {
-        Zakazivanje z = new Zakazivanje(new Salon(123468L),new Korisnik(1),400,5, new Placanje(1));
+        Zakazivanje z = new Zakazivanje(new Salon(123468L),new Korisnik(1),400,5, new Placanje(1,"kartica"));
         assertDoesNotThrow(() -> zapamtiZakazivanjeSO.validate((OpstiDomenskiObjekat) z));
     }
 
@@ -51,7 +51,7 @@ public class ZapamtiZakazivanjeSOTest {
 
     @Test
     public void testExecuteOperation() throws Exception {
-        Zakazivanje z = new Zakazivanje(new Salon(123468L),new Korisnik(1),400,5, new Placanje(1));
+        Zakazivanje z = new Zakazivanje(new Salon(123468L),new Korisnik(1),400,5, new Placanje(1,"kartica"));
 
       
 
